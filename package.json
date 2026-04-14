@@ -1,0 +1,20 @@
+{
+  "name": "porto-resume-blog-ssr",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.js",
+    "build": "vite build --outDir dist/client && vite build --ssr src/entry-server.jsx --outDir dist/server",
+    "start": "node server/index.js --production",
+    "preview": "node server/index.js --production"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "express": "^5.1.0",
+    "vite": "^5.4.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {}
+}

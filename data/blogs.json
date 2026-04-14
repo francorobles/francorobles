@@ -1,0 +1,24 @@
+[
+  {
+    "id": "porto-brief-2026",
+    "title": "Designing in the Dark Without Losing the Thread",
+    "excerpt": "A short note on keeping a sharp editorial workflow inside a dramatic visual system.",
+    "body": "Dark interfaces work best when hierarchy is crisp. The Porto resume style uses strong section contrast, compact metadata, and a clean accent color, so the writing gets a frame without disappearing into decoration.",
+    "author": "Franco Robles",
+    "category": "Design",
+    "createdAt": "2026-04-14T14:30:00.000Z",
+    "image": "/assets/resume/blog-1.jpg",
+    "readTime": "1 min read"
+  },
+  {
+    "id": "react-ssr-notes",
+    "title": "Why This Blog Starts on the Server",
+    "excerpt": "Server rendering gives the first view real content, then React takes over for the writing flow.",
+    "body": "The page is rendered on the server with the current posts already in place. Once the browser hydrates, creating a new post feels immediate while the API persists the content to a JSON file.",
+    "author": "Franco Robles",
+    "category": "React",
+    "createdAt": "2026-04-13T10:00:00.000Z",
+    "image": "/assets/resume/blog-2.jpg",
+    "readTime": "1 min read"
+  }
+]

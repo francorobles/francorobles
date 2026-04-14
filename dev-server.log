@@ -1,0 +1,5 @@
+
+> porto-resume-blog-ssr@1.0.0 dev
+> node server/index.js
+
+React SSR blog studio running in development at http://localhost:5173
