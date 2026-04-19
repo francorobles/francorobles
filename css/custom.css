@@ -1,0 +1,24 @@
+/* Blog thumbnails */
+#blogs .custom-thumb-info-2 .thumb-info-wrapper {
+	max-height: 555px;
+	overflow: hidden;
+}
+
+#blogs .custom-thumb-info-2 .thumb-info-wrapper img {
+	width: 100%;
+	max-height: 555px;
+	object-fit: cover;
+}
+
+#blogs .custom-blog-thumb-555x209 {
+	aspect-ratio: 555 / 209;
+	max-height: 209px;
+	overflow: hidden;
+}
+
+#blogs .custom-blog-thumb-555x209 img {
+	width: 100%;
+	height: 100%;
+	max-height: none;
+	object-fit: cover;
+}

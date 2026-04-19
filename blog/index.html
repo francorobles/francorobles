@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Franco Robles | Blog</title>
+	<meta name="description" content="Engineering notes, architecture writeups, and hands-on software development articles by Franco Robles." />
+	<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet" type="text/css">
+	<style>
+		:root {
+			--primary: #0088cc;
+			--primary-soft: rgba(0, 136, 204, 0.16);
+			--secondary: #171717;
+			--quaternary: #1f1e1c;
+			--light: #ffffff;
+			--text-soft: #b7b7b7;
+			--text-muted: #727c93;
+			--line: rgba(255, 255, 255, 0.08);
+			--card: rgba(31, 30, 28, 0.96);
+			--shadow: 0 12px 90px -10px rgba(0, 0, 0, 0.48);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: "Poppins", Arial, sans-serif;
+			color: var(--text-soft);
+			background: linear-gradient(180deg, #0f0f0f 0%, var(--secondary) 48%, var(--quaternary) 100%);
+		}
+
+		a {
+			color: inherit;
+		}
+
+		.shell {
+			width: min(1120px, calc(100% - 2rem));
+			margin: 0 auto;
+			padding: 3rem 0 4rem;
+		}
+
+		.topbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.brand {
+			text-decoration: none;
+			font-size: 0.9rem;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--light);
+		}
+
+		.back-link {
+			border: 1px solid var(--primary);
+			border-radius: 8px;
+			color: var(--light);
+			padding: 0.75rem 1rem;
+			text-decoration: none;
+			font-size: 0.82rem;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.hero {
+			background: linear-gradient(135deg, rgba(31, 30, 28, 0.98), rgba(23, 23, 23, 0.94));
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			box-shadow: var(--shadow);
+			padding: 3rem;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero::after {
+			content: "";
+			position: absolute;
+			inset: auto -4rem -4rem auto;
+			width: 14rem;
+			height: 14rem;
+			background: linear-gradient(135deg, transparent 0%, var(--primary-soft) 100%);
+			transform: rotate(12deg);
+		}
+
+		.eyebrow {
+			margin: 0 0 0.8rem;
+			font-size: 0.82rem;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			color: var(--primary);
+		}
+
+		h1, h2 {
+			line-height: 1.15;
+			margin: 0;
+		}
+
+		h1 {
+			max-width: 12ch;
+			color: var(--light);
+			font-size: 4.2rem;
+			font-weight: 600;
+		}
+
+		.deck {
+			max-width: 62ch;
+			margin: 1.4rem 0 0;
+			color: var(--text-muted);
+			font-size: 1.08rem;
+			line-height: 1.8;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1.5rem;
+			margin-top: 1.5rem;
+		}
+
+		.post-card {
+			background: var(--card);
+			border: 1px solid var(--line);
+			border-radius: 8px;
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.post-card a {
+			text-decoration: none;
+		}
+
+		.post-image {
+			display: block;
+			aspect-ratio: 555 / 209;
+			overflow: hidden;
+		}
+
+		.post-image img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.post-body {
+			padding: 1.5rem;
+		}
+
+		.post-date {
+			display: inline-block;
+			margin-bottom: 0.85rem;
+			border-left: 3px solid var(--primary);
+			padding-left: 0.75rem;
+			color: var(--text-soft);
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.post-body h2 {
+			color: var(--light);
+			font-size: 1.45rem;
+			font-weight: 700;
+		}
+
+		.post-body p {
+			margin: 0.85rem 0 0;
+			color: var(--text-muted);
+			font-size: 0.98rem;
+			line-height: 1.8;
+		}
+
+		.read-more {
+			display: inline-block;
+			margin-top: 1.2rem;
+			color: var(--primary);
+			font-size: 0.82rem;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		@media (max-width: 760px) {
+			.shell {
+				width: min(100% - 1rem, 1120px);
+				padding-top: 1rem;
+			}
+
+			.topbar {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			.hero {
+				padding: 1.35rem;
+			}
+
+			h1 {
+				font-size: 2.45rem;
+			}
+
+			.grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="shell">
+		<nav class="topbar" aria-label="Blog navigation">
+			<a class="brand" href="../index.html">Franco Robles</a>
+			<a class="back-link" href="../index.html#blogs">Back to Resume</a>
+		</nav>
+
+		<header class="hero">
+			<p class="eyebrow">Engineering Notes</p>
+			<h1>Blog</h1>
+			<p class="deck">Hands-on notes on software architecture, observability, cloud systems, AI-assisted development, and the small engineering decisions that make production work easier to reason about.</p>
+		</header>
+
+		<section class="grid" aria-label="All blog posts">
+			<article class="post-card">
+				<a class="post-image" href="otel/index.html">
+					<img src="otel/assets/screenshots/08-telemetry-output.png" alt="OpenTelemetry console output with logs, spans, and metrics" />
+				</a>
+				<div class="post-body">
+					<span class="post-date">April 19-2026</span>
+					<h2>
+						<a href="otel/index.html">What I Learned Building a Tiny OpenTelemetry Demo in .NET</a>
+					</h2>
+					<p>A compact coffee-shop API instrumented with OpenTelemetry, custom spans, business metrics, structured logs, and console-exported telemetry.</p>
+					<a class="read-more" href="otel/index.html">Read Article</a>
+				</div>
+			</article>
+		</section>
+	</main>
+</body>
+</html>

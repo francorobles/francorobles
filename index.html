@@ -1,30 +1,1491 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A server-rendered React blog studio inspired by the Porto resume dark design."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      id="googleFonts"
-      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link rel="stylesheet" href="/vendor/fontawesome-free/css/all.min.css" />
-    <link
-      rel="stylesheet"
-      href="/vendor/simple-line-icons/css/simple-line-icons.min.css"
-    />
-    <title>Resume Blog Studio</title>
-  </head>
-  <body>
-    <div id="root"><!--app-html--></div>
-    <!--initial-state-->
-    <script type="module" src="/src/entry-client.jsx"></script>
-  </body>
+
+<head>
+
+	<!-- Basic -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Franco Robles</title>
+
+	<meta name="keywords" content="Franco Robles" />
+	<meta name="description" content="Franco Robles">
+	<meta name="author" content="francorobles.com">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+	<!-- Web Fonts  -->
+	<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap"
+		rel="stylesheet" type="text/css">
+
+	<!-- Vendor CSS -->
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="vendor/animate/animate.compat.css">
+	<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="css/theme.css">
+	<link rel="stylesheet" href="css/theme-elements.css">
+	<link rel="stylesheet" href="css/theme-blog.css">
+	<link rel="stylesheet" href="css/theme-shop.css">
+
+	<!-- Demo CSS -->
+	<link rel="stylesheet" href="css/demos/demo-resume-dark.css">
+
+	<!-- Skin CSS -->
+	<link id="skinCSS" rel="stylesheet" href="css/skins/skin-resume-dark.css">
+
+	<!-- Theme Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body data-plugin-scroll-spy data-plugin-options="{'target': '.wrapper-spy'}">
+
+	<div class="body">
+		<header id="header" class="header-floating-icons"
+			data-plugin-options="{'stickyEnabled': false, 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': false, 'stickyStartAt': 0, 'stickySetTop': '60px', 'stickyChangeLogo': false}">
+			<div class="header-body bg-transparent">
+				<div class="header-container container">
+					<div class="header-row">
+						<div class="header-column">
+							<div class="header-row">
+								<div class="header-nav pt-1">
+									<div class="header-nav-main">
+										<nav class="wrapper-spy collapse">
+											<ul class="nav" id="mainNav">
+												<li>
+													<a data-hash href="#about-me" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-home icons"></i>
+														<span class="custom-tooltip text-color-dark">About Me</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#experience" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-eye icons"></i>
+														<span class="custom-tooltip text-color-dark">Experience</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#education" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-briefcase icons"></i>
+														<span class="custom-tooltip text-color-dark">Education</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#skills" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-graduation icons"></i>
+														<span class="custom-tooltip text-color-dark">Tech Stack & Languages</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#portfolio" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-diamond icons"></i>
+														<span class="custom-tooltip text-color-dark">Personal Projects</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash data-hash-offset="0" data-hash-offset-lg="100" href="#recommendations"
+														class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-pencil icons"></i>
+														<span class="custom-tooltip text-color-dark">Recommendations</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#certifications" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-graduation icons"></i>
+														<span class="custom-tooltip text-color-dark">Certifications</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#blogs" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-bubbles icons"></i>
+														<span class="custom-tooltip text-color-dark">Blogs</span>
+													</a>
+												</li>
+												<li>
+													<a data-hash href="#say-hello" class="nav-link text-color-dark bg-color-primary">
+														<i class="icon-envelope-open icons"></i>
+														<span class="custom-tooltip text-color-dark">Say Hello</span>
+													</a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+									<button class="btn header-btn-collapse-nav text-color-light border-radius-0" data-bs-toggle="collapse"
+										data-bs-target=".header-nav-main nav">
+										<i class="fas fa-bars"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div role="main" class="main">
+
+			<div id="about-me">
+				<section
+					class="section section-no-border section-parallax bg-transparent custom-section-padding-1 custom-position-1 custom-xs-bg-size-cover parallax-no-overflow m-0"
+					data-plugin-parallax data-plugin-options="{'speed': 1.5}"
+					data-image-src="img/demos/resume/about-me/about-me-bg-1.jpg">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-4 position-relative custom-sm-margin-bottom-1">
+								<img src="img/demos/resume/about-me/me.jpg"
+									class="img-fluid custom-border custom-image-position-2 custom-box-shadow-4" alt />
+							</div>
+							<div class="col-lg-6 col-xl-5">
+								<h1 class="text-color-primary custom-font-size-1">Franco Robles</h1>
+								<p class="text-color-light font-weight-normal custom-font-size-2 custom-margin-bottom-1">Senior Software
+									Engineer | Full Stack | 19+ Years Experience</p>
+								<span class="custom-about-me-infos">
+									<span class="custom-text-color-1 text-uppercase">Madrid, Spain</span>
+									<span class="custom-text-color-1 text-uppercase mb-3">Information Technology &amp; Services</span>
+									<span class="custom-text-color-1 text-uppercase">
+										<strong class="text-color-light">Previous: </strong>
+										Senior Software Engineer III at JP Morgan Chase
+									</span>
+									<span class="custom-text-color-1 text-uppercase">
+										<strong class="text-color-light">Education: </strong>
+										Systems Technology Institute
+										<a data-hash href="https://www.sti.edu/"
+											class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1 ms-2">View More</a>
+									</span>
+								</span>
+							</div>
+							<div class="col-lg-2 col-xl-3 d-none d-lg-block">
+								<img src="img/demos/resume/about-me/mouse.png" custom-anim class="img-fluid custom-image-pos-1" alt />
+							</div>
+						</div>
+					</div>
+					<ul class="social-icons custom-social-icons">
+						<li class="social-icons-facebook">
+							<a href="http://www.facebook.com/" target="_blank" title="Facebook">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<li class="social-icons-x">
+							<a href="http://www.x.com/" target="_blank" title="X">
+								<i class="fab fa-x-twitter"></i>
+							</a>
+						</li>
+						<li class="social-icons-youtube">
+							<a href="http://www.youtube.com/" target="_blank" title="Youtube">
+								<i class="fab fa-youtube"></i>
+							</a>
+						</li>
+					</ul>
+				</section>
+
+				<div class="custom-about-me-links bg-color-dark">
+					<div class="container">
+						<div class="row justify-content-end">
+							<div class="col-lg-3 text-center custom-xs-border-bottom p-0">
+								<a data-hash href="#say-hello" class="text-decoration-none">
+									<span class="custom-nav-button text-color-light">
+										<i class="icon-earphones-alt icons text-color-primary"></i>
+										Contact Information
+									</span>
+								</a>
+							</div>
+							<div class="col-lg-2 text-center custom-xs-border-bottom p-0">
+								<a data-hash href="#say-hello" class="text-decoration-none">
+									<span class="custom-nav-button custom-divisors text-color-light">
+										<i class="icon-envelope-open icons text-color-primary"></i>
+										Send Message
+									</span>
+								</a>
+							</div>
+							<div class="col-lg-3 text-center p-0">
+								<a href="#" class="text-decoration-none">
+									<span class="custom-nav-button text-color-light">
+										<i class="icon-cloud-download icons text-color-primary"></i>
+										Download Resume
+									</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<section class="section section-no-border bg-color-dark m-0">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+
+								<div
+									class="custom-box-details bg-color-darken custom-box-shadow-1 col-lg-6 ms-5 mb-5 mb-lg-4 float-end clearfix">
+									<h4>Personal Details</h4>
+									<div class="row">
+										<div class="col-md-6">
+											<ul class="custom-list-style-1 p-0 mb-0">
+												<li>
+													<span class="text-color-light">Location:</span>
+													<span class="custom-text-color-2">Madrid, Spain</span>
+												</li>
+												<li>
+													<span class="text-color-light">Marital:</span>
+													<span class="custom-text-color-2">Married</span>
+												</li>
+												<li>
+													<span class="text-color-light">Nationality:</span>
+													<span class="custom-text-color-2">Filipino</span>
+												</li>
+												<li>
+													<span class="text-color-light">Mail:</span>
+													<span class="custom-text-color-2"><a class="custom-text-color-2"
+															href="mailto:hello@francorobles.com">hello@francorobles.com</a></span>
+												</li>
+											</ul>
+										</div>
+										<div class="col-md-6">
+											<ul class="custom-list-style-1 p-0 mb-0">
+												<li>
+													<span class="text-color-light">Github:</span>
+													<span class="custom-text-color-2"><a class="custom-text-color-2"
+															href="https://github.com/francorobles" target="_blank">francorobles</a></span>
+												</li>
+												<li>
+													<span class="text-color-light">Twitter:</span>
+													<span class="custom-text-color-2"><a class="custom-text-color-2"
+															href="https://twitter.com/francorobles" target="_blank">francorobles</a></span>
+												</li>
+												<li>
+													<span class="text-color-light">Phone:</span>
+													<span class="custom-text-color-2"><a class="custom-text-color-2"
+															href="tel:+639159655787">+639159655787</a></span>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<h2 class="text-color-light font-weight-extra-bold text-uppercase">About Me</h2>
+
+								<p>With nearly two decades of experience navigating the complexities of systems architecture and
+									full-stack development, I have dedicated my career to building robust, scalable solutions that bridge
+									the gap between high-level logic and real-world infrastructure. My journey has been defined by a
+									deep-seated passion for the .NET ecosystem, where I have spent 18 years refining my expertise in C#
+									and SQL Server. Beyond the code, I am driven by the challenge of managing complex technical
+									environments, from deploying advanced networking hardware to architecting intricate backend systems
+									that power essential business operations.</p>
+
+								<div class="about-me-more" id="aboutMeMore">
+									<p>Innovation, to me, is not just about adopting the latest framework; it is about the disciplined
+										application of technology to solve tangible problems. This philosophy extends into my work with
+										automated systems and AI orchestration, where I explore the potential of agentic frameworks to
+										streamline workflows. I believe in a "build in public" approach, fostering transparency and
+										continuous learning within the tech community. By integrating diverse tools—from PostgreSQL and
+										TypeScript to Kotlin Multiplatform—I strive to create versatile applications that maintain high
+										performance across varied platforms and environments.</p>
+
+									<p>My professional focus is complemented by a fascination with the precision and strategy found in
+										high-stakes engineering disciplines, such as those seen in elite motorsport. I find that the
+										principles of resilience and technical excellence required on the track mirror the dedication needed
+										to maintain critical ISP infrastructure and community-wide connectivity projects. Whether I am
+										optimizing a database query or configuring a remote network node, my goal remains the same: to
+										deliver reliable, high-quality engineering that stands the test of time and provides genuine value
+										to the end-user.</p>
+
+									<p>In addition to my technical pursuits, I am committed to the growth of the local tech landscape,
+										frequently engaging in initiatives that bring hands-on technology experience to the next generation.
+										I thrive in environments that demand both strategic oversight and granular technical execution,
+										balancing the big-picture vision of a systems architect with the precision of a senior engineer. As
+										I continue to evolve alongside the ever-shifting digital frontier, I remain focused on crafting
+										software and infrastructure that are not only functional but truly transformative in their impact.
+									</p>
+								</div>
+
+								<a id="aboutMeMoreBtn" class="btn btn-tertiary text-uppercase custom-btn-style-1 text-1" href="#">View
+									More</a>
+
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<section id="experience" class="section section-secondary section-no-border m-0">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h2 class="text-color-light text-uppercase font-weight-extra-bold">Experience</h2>
+							<section class="timeline custom-timeline" id="timeline">
+								<div class="timeline-body">
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Mar 2024</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Apr 2026</span>
+												</span>
+												<p class="text-color-light">(2 Years 2 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">BGC,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Senior Software Engineer III / AVP</h4>
+												<h5 class="text-color-light font-weight-semibold">JP Morgan Chase & Co.</h5>
+												<p class="custom-text-color-2">
+													Develop and maintain critical microservices hosted on proprietary hybrid and AWS cloud
+													servers, ensuring high availability and performance.
+													<br /><br />Manage a portfolio of over 500 production-level microservices, handling
+													operations, scaling, and support.
+													<br /><br />Serve as a key point of contact, coordinating project status, strategies, and
+													solutions with stakeholders across the US, India, and the Philippines.
+													<br /><br />Spearhead the resolution of complex support issues, minimizing downtime and
+													business impact across different regions.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Jul 2021</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Feb 2024</span>
+												</span>
+												<p class="text-color-light">(2 Years 8 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Remote
+													<span
+														class="company-location text-color-light font-weight-normal text-uppercase">Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Technical Lead</h4>
+												<h5 class="text-color-light font-weight-semibold">Sinch</h5>
+												<p class="custom-text-color-2">Led a cross-functional team of back-end and front-end developers
+													in the design, development, and maintenance of microservices deployed on AWS.
+													<br /><br />Architected and implemented core services using Python and NodeJS, supporting key
+													business functions.
+													<br /><br />Directed the team's workflow by managing and assessing Jira support tickets and
+													delegating tasks to ensure efficient project delivery
+													<br /><br />Mentored junior developers, conducted code reviews, and implemented best practices
+													to maintain code quality and team productivity.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">May 2020</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Jun 2021</span>
+												</span>
+												<p class="text-color-light">(1 Year 2 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Remote
+													<span
+														class="company-location text-color-light font-weight-normal text-uppercase">Singapore</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Solutions Architect</h4>
+												<h5 class="text-color-light font-weight-semibold">PTC System(s) Pte Ltd</h5>
+												<p class="custom-text-color-2">Led two teams that successfully migrated a customer-facing
+													e-commerce web application, which increased web performance from 6 to 80 (throttled).
+													<br /><br />Successfully deployed an RPA (UiPath) automation solution to three major
+													companies, including FujiFilm and Comfort Delgro, streamlining business processes and
+													improving efficiency.
+													<br /><br />Managed and supported critical application and infrastructure migrations,
+													including upgrading Postgres 11 to 13 and patching Java applications and microservices.
+													<br /><br />Acted as the first line of support for application and cloud-related issues (e.g.,
+													Nginx, AWS Lambda, application VMs), ensuring system stability and performance.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Nov 2019</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">May 2020</span>
+												</span>
+												<p class="text-color-light">(7 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Makati,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Senior Backend Developer </h4>
+												<h5 class="text-color-light font-weight-semibold">hammerjack</h5>
+												<p class="custom-text-color-2">Served as the primary technical contact in the Philippines for an
+													Australian microservices partner.
+													<br /><br />Developed robust back-end microservices tailored to client requirements, working
+													closely with Australian counterparts.
+													<br /><br />Performed critical code reviews and approved pull requests to maintain
+													high-quality code standards.
+													<br /><br />Collaborated directly with the CTO and DevOps team to implement new features and
+													solutions.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Aug 2019</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Nov 2019</span>
+												</span>
+												<p class="text-color-light">(4 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Pasay,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Solutions Developer - Level 4</h4>
+												<h5 class="text-color-light font-weight-semibold">Cebu Pacific Air</h5>
+												<p class="custom-text-color-2">Developed back-end microservices for core airline functions, from
+													ticketing to flight schedules.
+													<br /><br />Executed a successful migration of .NET Web APIs to NodeJS, improving system
+													efficiency and scalability.
+													<br /><br />Provided cross-functional support by assisting other teams with Angular front-end
+													development.
+													<br /><br />Conducted local code reviews and provided technical support to stakeholders to
+													resolve issues and clarify requirements.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Jul 2018</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Jul 2019</span>
+												</span>
+												<p class="text-color-light">(1 Year 1 Month)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Pasay,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Senior Programmer</h4>
+												<h5 class="text-color-light font-weight-semibold">Royal Caribbean Cruises Ltd.</h5>
+												<p class="custom-text-color-2">Mentored and led development teams for PHP and .NET, focusing on
+													CakePHP and ASP.NET with C#.
+													<br /><br />Collaborated with Project Managers, Product Owners, and Solution Architects during
+													project planning meetings.
+													<br /><br />Provided hands-on mentorship to a team of seven junior developers.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Jun 2015</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Jun 2018</span>
+												</span>
+												<p class="text-color-light">(3 Years 1 Month)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Makati,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Systems Analyst</h4>
+												<h5 class="text-color-light font-weight-semibold">CWT Philippines</h5>
+												<p class="custom-text-color-2">Developed Windows Forms applications using .NET and WPF.
+													<br /><br />Engineered RESTful APIs to integrate with major Global Distribution Systems (GDS)
+													like Amadeus, Galileo, Apollo, and Saber.
+													<br /><br />Collaborated with cross-functional teams of 25+ developers, QA, and Business
+													Analysts to deliver projects on time.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Dec 2014</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Mar 2017</span>
+												</span>
+												<p class="text-color-light">(2 Years 4 Month)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Remote
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Makati,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Technical Advisor</h4>
+												<h5 class="text-color-light font-weight-semibold">SkRocket</h5>
+												<p class="custom-text-color-2">Developed Web Applications and Mobile Applications for the
+													clients of SKRocket.
+													<br /><br />Worked with Business Owners for the clients of SKRocket during the
+													conceptualization of their bread and butter products.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">May 2014</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Nov 2014</span>
+												</span>
+												<p class="text-color-light">(7 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Pasay,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">.NET Consultant</h4>
+												<h5 class="text-color-light font-weight-semibold">Sysgem</h5>
+												<p class="custom-text-color-2">Developed Web Applications for OSM Maritime.
+													<br /><br />Performed Optimizations of the web applications of OSM Maritime Web Applications.
+													<br /><br />Worked with BA’s and SA’s and conveyed solutions applicable to current project
+													where I am envolved.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Jun 2011</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Jun 2013</span>
+												</span>
+												<p class="text-color-light">(2 Years 1 Month)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Ortigas,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Senior Web Developer</h4>
+												<h5 class="text-color-light font-weight-semibold">Emerson Network Power</h5>
+												<p class="custom-text-color-2">Developed and maintained web applications for ENP (Emerson
+													Network Power)
+													<br /><br />Collaborated with our US counterpart from Columbus Ohio on a day to day basis.
+													<br /><br />Sent to the US for 2 consecutive years for project familiarizations
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Dec 2009</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">May 2011</span>
+												</span>
+												<p class="text-color-light">(1 Year 6 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Pasay,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Applications Engineer</h4>
+												<h5 class="text-color-light font-weight-semibold">Star Cruises</h5>
+												<p class="custom-text-color-2">Developed, maintained, and enhanced the internal projects of Star
+													Cruises from windows forms to web apps.
+													<br /><br />Worked with project leads for and maintained an excellent performance during my
+													tenure.
+													<br /><br />Sent to Hong Kong for 2 weeks and collaborated Ship IT and performed analysis on
+													how Ship operations and ship programs work.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">May 2008</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Dec 2009</span>
+												</span>
+												<p class="text-color-light">(1 Year 8 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Pasay,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">Software Engineer</h4>
+												<h5 class="text-color-light font-weight-semibold">Sony Philippines</h5>
+												<p class="custom-text-color-2">Developed WPF Applications for Marketing Events of Sony
+													Philippines.
+													<br /><br />Worked with Department Leads and maintain marketing applications for Sony
+													Philippines.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">Dec 2006</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">May 2008</span>
+												</span>
+												<p class="text-color-light">(1 Year 6 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Manila,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">.NET Software Engineer</h4>
+												<h5 class="text-color-light font-weight-semibold">Magsaysay Group Of Companies</h5>
+												<p class="custom-text-color-2">Developed and maintained HR Applications of Magsaysay Group of
+													Companies.
+													<br /><br />Worked with multiple departments and maintained legacy and erp applications.
+												</p>
+											</div>
+										</div>
+									</article>
+									<article class="timeline-box right custom-box-shadow-2">
+										<div class="row">
+											<div class="experience-info col-lg-3 col-sm-5 bg-color-primary">
+												<span class="from text-color-light text-uppercase">
+													From
+													<span class="font-weight-semibold">May 2006</span>
+												</span>
+												<span class="to text-color-light text-uppercase">
+													To
+													<span class="font-weight-semibold">Dec 2006</span>
+												</span>
+												<p class="text-color-light">(8 Months)</p>
+												<span class="company text-color-light font-weight-semibold">
+													Full-time
+													<span class="company-location text-color-light font-weight-normal text-uppercase">Manila,
+														Philippines</span>
+												</span>
+											</div>
+											<div class="experience-description col-lg-9 col-sm-7 bg-color-dark">
+												<h4 class="text-color-light font-weight-semibold">.NET Software Engineer</h4>
+												<h5 class="text-color-light font-weight-semibold">System Renovation Incorporated</h5>
+												<p class="custom-text-color-2">Migrated Legacy FoxPro Application (Hospital System) to .NET
+												</p>
+											</div>
+										</div>
+									</article>
+									<div class="timeline-bar"></div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="education" class="section section-no-border bg-color-dark m-0">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h2 class="text-color-white text-uppercase font-weight-extra-bold m-0">Education</h2>
+							<div
+								class="owl-carousel nav-bottom custom-dots-style-1 custom-dots-color-1 custom-dots-color-1-light mb-0"
+								data-plugin-options="{'items': 1, 'loop': false, 'dots': true, 'nav': false}">
+								<div class="row">
+									<div class="col-lg-6 col-sm-6 pb-4">
+										<div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
+											<i class="icon-graduation icons text-color-primary"></i>
+											<h4 class="font-weight-semibold text-color-light m-0">Systems Technology Institute</h4>
+											<h6 class="font-weight-semibold text-color-light m-0">AWARDS: CUM LAUDE</h6>
+											<p class="custom-text-color-2 mb-1">Bachelor Of Science Major In Computer Science</p>
+											<strong class="text-color-primary">2002-2006</strong>
+										</div>
+									</div>
+									<div class="col-lg-6 col-sm-6 pb-4">
+										<div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
+											<i class="icon-graduation icons text-color-primary"></i>
+											<h4 class="font-weight-semibold text-color-light m-0">Cathedral School Of La Naval</h4>
+											<h6 class="font-weight-semibold text-color-light m-0">Naval, Biliran, Philippines</h6>
+											<p class="custom-text-color-2 mb-1">High School</p>
+											<strong class="text-color-primary">1998-2002</strong>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6 col-sm-6 pb-4">
+										<div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
+											<i class="icon-graduation icons text-color-primary"></i>
+											<h4 class="font-weight-semibold text-color-light m-0">Jamorawon Elementary School</h4>
+											<h6 class="font-weight-semibold text-color-light m-0">Jamorawon, Biliran, Philippines</h6>
+											<p class="custom-text-color-2 mb-1">Elementary</p>
+											<strong class="text-color-primary">1992-1998</strong>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="skills" class="section section-no-border bg-color-dark m-0">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-md-6 col-lg-8 mb-4 mb-md-0">
+							<div class="row">
+								<div class="col-lg-6">
+									<h2 class="text-color-light text-uppercase font-weight-extra-bold">Tech Stack & Language</h2>
+									<div class="progress-bars custom-progress-bars">
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>C#</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="95%"></div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>React</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="300">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>React Native</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="300">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Kotlin Native</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="80%" data-appear-animation-delay="300">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Python</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="85%" data-appear-animation-delay="600">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>CSS</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>SQL SERVER</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>AWS</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>ASP.NET</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>GO</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Docker</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="85%" data-appear-animation-delay="900">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="progress-bars custom-progress-bars custom-md-margin-top-1">
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Javascript</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%"></div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Typescript</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="85%" data-appear-animation-delay="300">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Java</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="600">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>PostgreSQL</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Azure</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Terraform</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="90%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>HTML</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="95%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Kubernetes</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="70%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>PHP</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="80%" data-appear-animation-delay="900">
+											</div>
+										</div>
+										<div class="progress-label text-color-light font-weight-semibold text-uppercase text-2">
+											<span>Linux</span>
+										</div>
+										<div class="progress mb-2">
+											<div class="progress-bar" data-appear-progress-animation="85%" data-appear-animation-delay="900">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4">
+							<div class="row">
+								<div class="col">
+									<div class="custom-box-details bg-color-darken custom-box-shadow-1">
+										<h4 class="text-color-light">Languages</h4>
+										<ul class="custom-list-style-1 p-0">
+											<li>
+												<span class="font-weight-semibold custom-max-width-1 text-color-light"><img src="img/blank.gif"
+														class="flag flag-us me-1" alt="English">English:</span>
+												<span class="custom-text-color-2">Advanced</span>
+											</li>
+											<li>
+												<span class="font-weight-semibold custom-max-width-1 text-color-light"><img src="img/blank.gif"
+														class="flag flag-es me-1" alt="Spanish">Spanish:</span>
+												<span class="custom-text-color-2">Basic</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="portfolio" class="section section-no-border bg-color-secondary m-0">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h2 class="text-color-light font-weight-extra-bold text-uppercase">Personal Projects</h2>
+							<ul class="nav nav-pills sort-source custom-nav-sort mb-4" data-sort-id="portfolio"
+								data-option-key="filter">
+								<li class="nav-item active" data-option-value="*"><a class="nav-link active" href="#">Show All</a></li>
+								<li class="nav-item" data-option-value=".websites"><a class="nav-link" href="#">Websites</a></li>
+								<li class="nav-item" data-option-value=".mobile"><a class="nav-link" href="#">Mobile</a></li>
+								<li class="nav-item" data-option-value=".iot"><a class="nav-link" href="#">IoT</a></li>
+							</ul>
+							<div class="sort-destination-loader sort-destination-loader-showing">
+								<div class="row image-gallery sort-destination lightbox" data-sort-id="portfolio"
+									data-plugin-options="{'delegate': 'a.lightbox-portfolio', 'type': 'image', 'gallery': {'enabled': true}}">
+									<div class="col-12 col-sm-6 col-lg-3 isotope-item websites">
+										<div class="image-gallery-item mb-4 pb-3">
+											<a href="img/demos/resume/portfolio/portfolio-1.jpg" class="lightbox-portfolio">
+												<span class="thumb-info custom-thumb-info-1">
+													<span class="thumb-info-wrapper">
+														<span class="thumb-info-plus"></span>
+														<img src="img/demos/resume/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6 col-lg-3 isotope-item websites">
+										<div class="image-gallery-item mb-4 pb-3">
+											<a href="img/demos/resume/portfolio/portfolio-2.jpg" class="lightbox-portfolio">
+												<span class="thumb-info custom-thumb-info-1">
+													<span class="thumb-info-wrapper">
+														<span class="thumb-info-plus"></span>
+														<img src="img/demos/resume/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6 col-lg-3 isotope-item mobile">
+										<div class="image-gallery-item mb-4 pb-3">
+											<a href="img/demos/resume/portfolio/portfolio-3.jpg" class="lightbox-portfolio">
+												<span class="thumb-info custom-thumb-info-1">
+													<span class="thumb-info-wrapper">
+														<span class="thumb-info-plus"></span>
+														<img src="img/demos/resume/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6 col-lg-3 isotope-item mobile">
+										<div class="image-gallery-item mb-4 pb-3">
+											<a href="img/demos/resume/portfolio/portfolio-4.jpg" class="lightbox-portfolio">
+												<span class="thumb-info custom-thumb-info-1">
+													<span class="thumb-info-wrapper">
+														<span class="thumb-info-plus"></span>
+														<img src="img/demos/resume/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6 col-lg-3 isotope-item iot">
+										<div class="image-gallery-item mb-4 pb-3">
+											<a href="img/demos/resume/portfolio/portfolio-5.jpg" class="lightbox-portfolio">
+												<span class="thumb-info custom-thumb-info-1">
+													<span class="thumb-info-wrapper">
+														<span class="thumb-info-plus"></span>
+														<img src="img/demos/resume/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+									<div class="col-12 col-sm-6 col-lg-3 isotope-item mobile">
+										<div class="image-gallery-item mb-4 pb-3">
+											<a href="img/demos/resume/portfolio/portfolio-6.jpg" class="lightbox-portfolio">
+												<span class="thumb-info custom-thumb-info-1">
+													<span class="thumb-info-wrapper">
+														<span class="thumb-info-plus"></span>
+														<img src="img/demos/resume/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+													</span>
+												</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="recommendations" class="section section-no-border bg-color-primary m-0">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h2 class="text-color-light font-weight-extra-bold text-uppercase">Recommendations</h2>
+						</div>
+						<div class="col-lg-12 p-0">
+							<div
+								class="owl-carousel custom-dots-style-1 custom-dots-color-1 custom-dots-color-1-light custom-dots-position-1 mb-0"
+								data-plugin-options="{'items': 1, 'autoHeight': true, 'loop': false, 'nav': false, 'dots': true}">
+								<div>
+									<div class="col">
+										<div
+											class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
+											<blockquote class="pb-2">
+												<p class="custom-text-color-3">I’m grateful to have the opportunity to work with Franco in our
+													Billing team. As a senior engineer, he has consistently been someone I can rely on whenever I
+													encounter challenges in my tasks. His deep technical knowledge, willingness to share insights,
+													and ability to explain complex issues clearly have helped me grow as an engineer. I truly
+													appreciate his support, professionalism, and the guidance he provides to the team.</p>
+											</blockquote>
+											<div class="testimonial-author float-start">
+												<p><strong class="text-uppercase text-color-light">Ralph Gabriel Mariano</strong><span
+														class="custom-text-color-3 font-weight-light">Full Stack Java Developer | JP Morgan Chase &
+														Co.</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="col">
+										<div
+											class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
+											<blockquote class="pb-2">
+												<p class="custom-text-color-3">I worked with Franco as part of a geographically dispersed
+													development team from 2016-2018 at CWT. Working with Franco is easy despite the time
+													difference between London and Philippines. Franco's work ethic is excellent. Franco is hard
+													working, he listens and understands the business requirements and timelines to work with the
+													team to ensure the development was delivered on time. I would not hesitate to recommend
+													working with Franco.</p>
+											</blockquote>
+											<div class="testimonial-author float-start">
+												<p><strong class="text-uppercase text-color-light">Claire Burt</strong><span
+														class="custom-text-color-3 font-weight-light">Technical Product Manager | CWT</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="col">
+										<div
+											class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
+											<blockquote class="pb-2">
+												<p class="custom-text-color-3">Reliable is the first word that comes into my mind when I think
+													of Franco.
+													<br /><br />I have been a Product Owner of Franco for several various applications. His
+													technical skills are wide and broad as it includes PHP, .NET, automation, and mobile
+													development (at least those that I know of). But Franco is not just about skills, he is a
+													seasoned developer that has an excellent sense of teamwork, responsibility, and leadership. He
+													finds solutions to every user story I present to him.
+													<br /><br />Should there be any unplanned, urgent, and critical event, Franco is my go-to
+													person. He responds when such need arises. Due to his experience, Franco has helped me a lot
+													on delivering product increments on the right technology platform and the right approach.
+													Franco would be an excellent asset to any team and having him around would increase the speed
+													of delivery and quality while not sacrificing teamwork.
+												</p>
+											</blockquote>
+											<div class="testimonial-author float-start">
+												<p><strong class="text-uppercase text-color-light">Gerard Casanova</strong><span
+														class="custom-text-color-3 font-weight-light">SAP Certified | Royal Carribean</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="col">
+										<div
+											class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
+											<blockquote class="pb-2">
+												<p class="custom-text-color-3">I have worked with Franco, and found his overall technical
+													knowledge and communication skills to be very good. I also found his problem solving
+													capabilities and customer oriented approach to be very excellent as well.</p>
+											</blockquote>
+											<div class="testimonial-author float-start">
+												<p><strong class="text-uppercase text-color-light">Raymond Cambell</strong><span
+														class="custom-text-color-3 font-weight-light">Technical Sales Representative | Atlantic
+														Industrial Electric</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="col">
+										<div
+											class="testimonial custom-testimonial-style-1 custom-testimonial-style-1-light testimonial-with-quotes mb-0">
+											<blockquote class="pb-2">
+												<p class="custom-text-color-3">Within a short time I had to work with Franco, I can say that he is a very open-minded person. He acknowledges suggestions from a different standpoint and interprets these ideas by looking inside and outside of the box; A very unique trait for a developer, that would help increase the quality of the end product.</p>
+											</blockquote>
+											<div class="testimonial-author float-start">
+												<p><strong class="text-uppercase text-color-light">Neilvin Nestor Torres Jr.</strong><span
+														class="custom-text-color-3 font-weight-light">Software Quality Assurance Engineer | iBridge</span></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="certifications" class="section section-no-border bg-color-dark m-0">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h2 class="text-color-white text-uppercase font-weight-extra-bold m-0">Certifications</h2>
+							<div
+								class="owl-carousel nav-bottom custom-dots-style-1 custom-dots-color-1 custom-dots-color-1-light mb-0"
+								data-plugin-options="{'items': 1, 'loop': false, 'dots': true, 'nav': false}">
+								<div class="row">
+									<div class="col-lg-6 col-sm-6 pb-4">
+										<div class="custom-box-details-2 bg-color-darken custom-box-shadow-3">
+											<i class="icon-graduation icons text-color-primary"></i>
+											<h4 class="font-weight-semibold text-color-light m-0">Certified AWS Cloud Practitioner</h4>
+											<h6 class="font-weight-semibold text-color-light m-0">AWS</h6>
+											<a href="https://www.credly.com/badges/c7b22517-b368-4c7a-8140-5b7f76017c5b/linked_in_profile" target="_blank" class="text-decoration-none">
+												<strong class="text-color-primary">View Credential</strong>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="blogs" class="section section-no-border bg-color-dark m-0">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<h2 class="text-color-white font-weight-extra-bold text-uppercase">My Blog</h2>
+
+							<div class="row">
+								<div class="col-lg-6 mb-5 mb-lg-0">
+									<article class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+										data-appear-animation="fadeIn" data-appear-animation-delay="0" data-appear-animation-duration="1s">
+										<div class="thumb-info-wrapper custom-blog-thumb-555x209">
+											<a href="blog/otel/index.html">
+												<img src="blog/otel/assets/screenshots/08-telemetry-output.png"
+													alt="OpenTelemetry console output with logs, spans, and metrics" class="img-fluid" />
+											</a>
+										</div>
+										<div class="thumb-info-caption">
+											<div class="thumb-info-caption-text">
+												<h4 class="mb-2">
+													<a href="blog/otel/index.html" class="text-decoration-none text-color-light font-weight-semibold">
+														What I Learned Building a Tiny OpenTelemetry Demo in .NET
+													</a>
+												</h4>
+												<p class="custom-text-color-2">A compact coffee-shop API instrumented with OpenTelemetry,
+													custom spans, business metrics, structured logs, and console-exported telemetry.
+												</p>
+											</div>
+											<hr class="solid m-0 mt-4 mb-2">
+											<div class="row justify-content-between">
+												<div
+													class="col-auto custom-blog-post-date text-uppercase font-weight-semibold text-color-light text-2">
+													April 19-2026
+												</div>
+												<div
+													class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2">
+													Share:
+													<ul class="mb-0">
+														<li>
+															<a class="item-facebook text-decoration-none text-uppercase"
+																href="https://www.facebook.com/sharer/sharer.php?u=blog/otel/index.html"
+																title="Share on Facebook">Facebook</a>
+														</li>
+														<li>
+															<a class="item-twitter text-decoration-none text-uppercase"
+																href="https://twitter.com/intent/tweet?url=blog/otel/index.html&amp;text=What%20I%20Learned%20Building%20a%20Tiny%20OpenTelemetry%20Demo%20in%20.NET"
+																title="Share on Twitter">Twitter</a>
+														</li>
+														<li>
+															<a class="item-google-plus text-decoration-none text-uppercase"
+																href="https://www.linkedin.com/sharing/share-offsite/?url=blog/otel/index.html"
+																title="Share on LinkedIn">Linked In</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</article>
+								</div>
+								<!-- <div class="col-lg-6">
+									<article class="thumb-info custom-thumb-info-2 custom-box-shadow-1 appear-animation"
+										data-appear-animation="fadeIn" data-appear-animation-delay="0" data-appear-animation-duration="1s">
+										<div class="thumb-info-wrapper">
+											<a href="#">
+												<img src="img/demos/resume/blog/blog-2.jpg" alt class="img-fluid" />
+											</a>
+										</div>
+										<div class="thumb-info-caption">
+											<div class="thumb-info-caption-text">
+												<h4 class="mb-2">
+													<a href="#" class="text-decoration-none text-color-light font-weight-semibold">
+														UI, UX Concepts
+													</a>
+												</h4>
+												<p class="custom-text-color-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+													tincidunt nulla tortor, a imperdiet enim tristique...</p>
+											</div>
+											<hr class="solid m-0 mt-4 mb-2">
+											<div class="row justify-content-between">
+												<div
+													class="col-auto custom-blog-post-date text-uppercase font-weight-semibold text-color-light text-2">
+													July 12-2025
+												</div>
+												<div
+													class="col-auto custom-blog-post-share text-uppercase font-weight-semibold text-color-light text-2">
+													Share:
+													<ul class="mb-0">
+														<li>
+															<a class="item-facebook text-decoration-none text-uppercase" href="#"
+																title="Share on Facebook">Facebook</a>
+														</li>
+														<li>
+															<a class="item-twitter text-decoration-none text-uppercase" href="#"
+																title="Share on Twitter">Twitter</a>
+														</li>
+														<li>
+															<a class="item-google-plus text-decoration-none text-uppercase" href="#"
+																title="https://linkedin.com" title="Linked In">Linked In</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</article>
+								</div> -->
+							</div>
+						</div>
+						<div class="col-lg-12 col-sm-12 pt-4 mt-4 text-center">
+							<a href="blog/index.html"
+								class="btn btn-primary btn-outline custom-btn-style-2 font-weight-bold custom-border-radius-1 text-uppercase">View
+								All</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<div id="say-hello" class="container-fluid" data-spy-offset="40">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<section class="section section-no-border bg-color-primary h-100 m-0">
+							<div class="row justify-content-end m-0">
+								<div class="col-half-section col-half-section-right me-3">
+
+									<h2 class="text-color-light text-uppercase font-weight-extra-bold">Say Hello</h2>
+									<form id="contactForm" class="contact-form custom-form-style form-errors-light"
+										action="php/contact-form.php" method="post">
+										<div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
+											<strong>Success!</strong> Your message has been sent to us.
+										</div>
+										<div class="contact-form-error alert alert-danger d-none mt-4" id="contactError">
+											<strong>Error!</strong> There was an error sending your message.
+											<span class="mail-error-message text-1 d-block" id="mailErrorMessage"></span>
+										</div>
+
+										<div class="form-content">
+											<div class="form-control-custom form-control-custom-light">
+												<input type="text" class="form-control" name="name" placeholder="Your Name *"
+													data-msg-required="This field is required." id="name" required="" />
+											</div>
+											<div class="form-control-custom form-control-custom-light">
+												<input type="text" class="form-control" name="subject" placeholder="Subject *"
+													data-msg-required="This field is required." id="subject" required="" />
+											</div>
+											<div class="form-control-custom form-control-custom-light">
+												<textarea maxlength="5000" data-msg-required="Please enter your message." rows="10"
+													class="form-control" name="message" placeholder="Message*" id="message" required=""
+													aria-required="true"></textarea>
+											</div>
+											<input type="submit"
+												class="btn btn-quaternary text-color-light text-uppercase font-weight-semibold outline-none custom-btn-style-2 custom-border-radius-1"
+												value="Submit" />
+										</div>
+									</form>
+
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-lg-6 p-0">
+						<section class="section section-no-border h-100 m-0"
+							style="background: url(img/demos/resume/contact/contact-bg-1.jpg); background-size: cover;">
+							<div class="row m-0">
+								<div class="col-half-section col-half-section-left ms-3">
+									<a href="mailto:hello@francorobles.com" class="text-decoration-none">
+										<span class="feature-box custom-feature-box align-items-center mb-4">
+											<span class="custom-feature-box-icon">
+												<i class="icon-envelope icons text-color-light"></i>
+											</span>
+											<span class="feature-box-info">
+												<span
+													class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Email</span>
+												<strong
+													class="font-weight-light text-color-light custom-opacity-effect-1">hello@francorobles.com</strong>
+											</span>
+										</span>
+									</a>
+									<a href="tel:+639159655787" class="text-decoration-none">
+										<span class="feature-box custom-feature-box align-items-center mb-4">
+											<span class="custom-feature-box-icon">
+												<i class="icon-phone icons text-color-light"></i>
+											</span>
+											<span class="feature-box-info">
+												<span
+													class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Phone</span>
+												<strong
+													class="font-weight-light text-color-light custom-opacity-effect-1">+639159655787</strong>
+											</span>
+										</span>
+									</a>
+									<a href="https://wa.me/639560418812" class="text-decoration-none" target="_blank"
+										rel="noopener noreferrer">
+										<span class="feature-box custom-feature-box align-items-center mb-4">
+											<span class="custom-feature-box-icon">
+												<i class="fab fa-whatsapp text-color-light"></i>
+											</span>
+											<span class="feature-box-info">
+												<span
+													class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">WhatsApp</span>
+												<strong
+													class="font-weight-light text-color-light custom-opacity-effect-1">+639560418812</strong>
+											</span>
+										</span>
+									</a>
+									<span class="feature-box custom-feature-box align-items-center">
+										<span class="custom-feature-box-icon">
+											<i class="icon-share icons text-color-light"></i>
+										</span>
+										<a href="http://www.facebook.com/francorobles007" class="d-flex text-decoration-none">
+											<span class="feature-box-info">
+												<span
+													class="custom-label font-weight-semibold text-uppercase custom-text-color-1 line-height-5">Follow
+													me</span>
+												<strong class="font-weight-light text-color-light custom-opacity-effect-1">Facebook</strong>
+											</span>
+										</a>
+										<a href="http://www.twitter.com/francorobles" class="d-flex text-decoration-none">
+											<span class="feature-box-info custom-both-side-border mt-2">
+												<strong class="font-weight-light text-color-light custom-opacity-effect-1">Twitter</strong>
+											</span>
+										</a>
+										<a href="http://www.linkedin.com/in/francorobles" class="d-flex text-decoration-none">
+											<span class="feature-box-info p-0 mt-2">
+												<strong class="font-weight-light text-color-light custom-opacity-effect-1">Linkedin</strong>
+											</span>
+										</a>
+									</span>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+
+			<footer id="footer" class="m-0 p-0">
+				<div class="footer-copyright bg-color-dark m-0">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-12 m-0">
+								<p class="custom-text-color-2">© Copyright 2026. All Rights Reserved.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Vendor -->
+		<script src="vendor/plugins/js/plugins.min.js"></script>
+
+		<!-- Theme Base, Components and Settings -->
+		<script src="js/theme.js"></script>
+
+		<!-- Current Page Vendor and Views -->
+		<script src="js/views/view.contact.js"></script>
+
+		<!-- Demo -->
+		<script src="js/demos/demo-resume.js"></script>
+
+		<!-- Theme Custom -->
+		<script src="js/custom.js"></script>
+
+		<!-- Theme Initialization Files -->
+		<script src="js/theme.init.js"></script>
+
+</body>
+
 </html>
