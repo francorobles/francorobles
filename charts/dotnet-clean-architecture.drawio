@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="dotnet-clean-architecture" name=".NET Clean Architecture">
+    <mxGraphModel dx="1571" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ring-presentation" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e0f2fe;strokeColor=#0284c7;strokeWidth=3;fontFamily=Tahoma;fontSize=12;fontStyle=1;fontColor=#0f172a;spacingTop=-90;spacing=18;verticalAlign=top;align=center;labelPosition=center;verticalLabelPosition=bottom;" value="Presentation / API, ASP.NET Core Web API,&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(15, 23, 42), rgb(211, 218, 234));&quot;&gt;MVC,&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(15, 23, 42), rgb(211, 218, 234));&quot;&gt;Minimal APIs, Controllers, Filters, Middleware&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="700" width="700" x="270" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="ring-infrastructure" parent="1" style="ellipse;html=1;aspect=fixed;fillColor=#ecfdf5;strokeColor=#059669;strokeWidth=3;fontFamily=Tahoma;fontSize=12;fontStyle=1;fontColor=#0f172a;spacingTop=-96;spacing=18;whiteSpace=wrap;convertToSvg=0;svgWhiteSpace=wrap;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;" value="Infrastructure, EF Core, Repositories, Identity,&amp;nbsp;&lt;div&gt;Email, File Storage, External APIs, Message Bus&lt;/div&gt;" vertex="1">
+          <mxGeometry height="540" width="540" x="350" y="229" as="geometry" />
+        </mxCell>
+        <mxCell id="ring-application" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fef9c3;strokeColor=#ca8a04;strokeWidth=3;fontFamily=Tahoma;fontSize=12;fontStyle=1;fontColor=#0f172a;spacingTop=-98;spacing=18;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Application, Use Cases, Commands, Queries,&amp;nbsp;&lt;div&gt;DTOs, Validators, Interfaces,&amp;nbsp;&lt;/div&gt;&lt;div&gt;Pipeline Behaviors&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="380" x="430" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="ring-domain" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fee2e2;strokeColor=#dc2626;strokeWidth=3;fontFamily=Tahoma;fontSize=12;fontStyle=1;fontColor=#0f172a;spacing=18;" value="Domain&#xa;Entities, Value Objects, Aggregates, Domain Events, Business Rules" vertex="1">
+          <mxGeometry height="220" width="220" x="510" y="390" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

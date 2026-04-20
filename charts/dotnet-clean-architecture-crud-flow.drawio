@@ -1,0 +1,170 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="clean-architecture-crud-flow" name="CRUD Flow">
+    <mxGraphModel dx="1768" dy="971" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#0f172a;" value=".NET Clean Architecture CRUD Flow" vertex="1">
+          <mxGeometry height="50" width="820" x="390" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Verdana;fontSize=11;fontColor=#64748b;" value="Runtime flow for Create, Read, Update, and Delete. Inner layers stay independent; outer details are reached through interfaces." vertex="1">
+          <mxGeometry height="34" width="960" x="320" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-client" parent="1" style="swimlane;html=1;startSize=34;horizontal=0;fillColor=#f8fafc;strokeColor=#cbd5e1;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#334155;" value="Client" vertex="1">
+          <mxGeometry height="710" width="210" x="40" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-presentation" parent="1" style="swimlane;html=1;startSize=34;horizontal=0;fillColor=#e0f2fe;strokeColor=#0284c7;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#075985;" value="Presentation / API" vertex="1">
+          <mxGeometry height="710" width="250" x="250" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="map-command" parent="lane-presentation" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Map request to use case&#xa;CreateCommand&#xa;GetByIdQuery&#xa;UpdateCommand&#xa;DeleteCommand" vertex="1">
+          <mxGeometry height="120" width="165" x="50" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-application" parent="1" style="swimlane;html=1;startSize=34;horizontal=0;fillColor=#fef9c3;strokeColor=#ca8a04;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#713f12;" value="Application" vertex="1">
+          <mxGeometry height="710" width="330" x="500" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-domain" parent="1" style="swimlane;html=1;startSize=34;horizontal=0;fillColor=#fee2e2;strokeColor=#dc2626;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#7f1d1d;" value="Domain" vertex="1">
+          <mxGeometry height="710" width="250" x="830" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="domain-rules" parent="lane-domain" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#dc2626;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Domain entity / aggregate&#xa;Business invariants&#xa;Value objects&#xa;Domain events" vertex="1">
+          <mxGeometry height="110" width="180" x="45" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="crud-branch" parent="lane-domain" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fff1f2;strokeColor=#dc2626;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;align=left;spacing=10;" value="CRUD-specific domain behavior&#xa;Create: construct valid entity&#xa;Read: apply query rules/spec&#xa;Update: mutate through methods&#xa;Delete: remove or soft-delete" vertex="1">
+          <mxGeometry height="150" width="185" x="45" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-domain-crud" edge="1" parent="lane-domain" source="domain-rules" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#dc2626;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="crud-branch" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-infrastructure" parent="1" style="swimlane;html=1;startSize=34;horizontal=0;fillColor=#dcfce7;strokeColor=#16a34a;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#14532d;" value="Infrastructure" vertex="1">
+          <mxGeometry height="710" width="260" x="1080" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="repo-impl" parent="lane-infrastructure" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Repository implementation&#xa;EF Core repository&#xa;External adapter" vertex="1">
+          <mxGeometry height="90" width="190" x="50" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="dbcontext" parent="lane-infrastructure" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#16a34a;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="DbContext / Unit of Work&#xa;Track changes&#xa;SaveChangesAsync" vertex="1">
+          <mxGeometry height="90" width="190" x="50" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-repo-dbcontext" edge="1" parent="lane-infrastructure" source="repo-impl" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#16a34a;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="dbcontext" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-database" parent="1" style="swimlane;html=1;startSize=34;horizontal=0;fillColor=#f1f5f9;strokeColor=#475569;fontFamily=Verdana;fontSize=11;fontStyle=1;fontColor=#334155;" value="Database" vertex="1">
+          <mxGeometry height="710" width="220" x="1340" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="database" parent="lane-database" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffffff;strokeColor=#475569;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="SQL Server / PostgreSQL&#xa;Tables, indexes, constraints" vertex="1">
+          <mxGeometry height="110" width="150" x="50" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="client-request" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="HTTP Request&#xa;POST / GET / PUT / DELETE" vertex="1">
+          <mxGeometry height="70" width="150" x="70" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="controller" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Controller / Minimal API Endpoint&#xa;Receives route, body, query, user context" vertex="1">
+          <mxGeometry height="90" width="165" x="300" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="api-validation" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Request DTO validation&#xa;ModelState / FluentValidation / endpoint filters" vertex="1">
+          <mxGeometry height="90" width="165" x="300" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="mediator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="MediatR / Use Case Dispatcher&#xa;Sends command or query" vertex="1">
+          <mxGeometry height="80" width="230" x="545" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="pipeline" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Application pipeline&#xa;Authorization&#xa;Validation&#xa;Logging / telemetry&#xa;Transaction behavior" vertex="1">
+          <mxGeometry height="120" width="230" x="545" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="handler" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#ca8a04;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Command / Query Handler&#xa;Coordinates the use case&#xa;No EF Core or HTTP details" vertex="1">
+          <mxGeometry height="100" width="230" x="545" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="ports" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fffbeb;strokeColor=#ca8a04;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Repository / Unit of Work Port&#xa;IProductRepository&#xa;IApplicationDbContext" vertex="1">
+          <mxGeometry height="90" width="230" x="545" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="map-response" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#0284c7;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="Map result to response DTO&#xa;201 Created&#xa;200 OK&#xa;204 No Content&#xa;ProblemDetails on failure" vertex="1">
+          <mxGeometry height="120" width="165" x="300" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="client-response" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#64748b;strokeWidth=2;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;shadow=1;" value="HTTP Response&#xa;DTO or status code" vertex="1">
+          <mxGeometry height="70" width="150" x="70" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-client-controller" edge="1" parent="1" source="client-request" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#475569;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="controller" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-controller-validation" edge="1" parent="1" source="controller" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#0284c7;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="api-validation" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-validation-map" edge="1" parent="1" source="api-validation" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#0284c7;fontFamily=Verdana;fontSize=11;fontColor=#0284c7;flowAnimation=1;" target="map-command" value="valid request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-map-mediator" edge="1" parent="1" source="map-command" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#0284c7;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="mediator" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="540" />
+              <mxPoint x="480" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-mediator-pipeline" edge="1" parent="1" source="mediator" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#ca8a04;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="pipeline" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-pipeline-handler" edge="1" parent="1" source="pipeline" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#ca8a04;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="handler" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-handler-domain" edge="1" parent="1" source="handler" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#dc2626;fontFamily=Verdana;fontSize=11;fontColor=#dc2626;exitX=1;exitY=0.5;exitDx=0;exitDy=0;flowAnimation=1;" value="business rules">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="550" />
+              <mxPoint x="800" y="400" />
+            </Array>
+            <mxPoint x="870" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-handler-ports" edge="1" parent="1" source="handler" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#ca8a04;fontFamily=Verdana;fontSize=11;fontColor=#ca8a04;flowAnimation=1;" target="ports" value="calls interface">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-dbcontext-db" edge="1" parent="1" source="dbcontext" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#475569;fontFamily=Verdana;fontSize=11;fontColor=#475569;entryX=0;entryY=0.636;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryPerimeter=0;flowAnimation=1;" target="database" value="SQL / migrations">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1273" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-db-return" edge="1" parent="1" source="database" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#475569;fontFamily=Verdana;fontSize=11;fontColor=#475569;entryX=0.75;entryY=1;entryDx=0;entryDy=0;flowAnimation=1;" target="dbcontext" value="data / affected rows">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1465" y="750" />
+              <mxPoint x="1273" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-repo-return" edge="1" parent="1" source="dbcontext" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#16a34a;fontFamily=Verdana;fontSize=11;fontColor=#16a34a;entryX=1;entryY=0.75;entryDx=0;entryDy=0;flowAnimation=1;" target="handler" value="entity / result">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1225" y="795" />
+              <mxPoint x="800" y="795" />
+              <mxPoint x="800" y="575" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-handler-response" edge="1" parent="1" source="handler" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#ca8a04;fontFamily=Verdana;fontSize=11;fontColor=#ca8a04;exitX=0;exitY=0.5;exitDx=0;exitDy=0;flowAnimation=1;" target="map-response" value="Result / errors">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="550" />
+              <mxPoint x="480" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-response-client" edge="1" parent="1" source="map-response" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#475569;fontFamily=Verdana;fontSize=11;flowAnimation=1;" target="client-response" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note-create" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#f0f9ff;strokeColor=#0284c7;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;align=left;spacing=10;" value="Create&#xa;POST /products&#xa;Validate DTO -&amp;gt; CreateProductCommand -&amp;gt; construct domain entity -&amp;gt; Add -&amp;gt; SaveChanges -&amp;gt; 201 Created" vertex="1">
+          <mxGeometry height="70" width="330" x="70" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="note-read" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fefce8;strokeColor=#ca8a04;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;align=left;spacing=10;" value="Read&#xa;GET /products/{id}&#xa;GetProductByIdQuery -&amp;gt; repository query/projection -&amp;gt; response DTO -&amp;gt; 200 OK or 404" vertex="1">
+          <mxGeometry height="70" width="330" x="425" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="note-update" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fff1f2;strokeColor=#dc2626;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;align=left;spacing=10;" value="Update&#xa;PUT /products/{id}&#xa;Load entity -&amp;gt; call domain methods -&amp;gt; persist changes -&amp;gt; 200 OK or 204 No Content" vertex="1">
+          <mxGeometry height="70" width="330" x="780" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="note-delete" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#f0fdf4;strokeColor=#16a34a;fontFamily=Verdana;fontSize=11;fontColor=#0f172a;align=left;spacing=10;" value="Delete&#xa;DELETE /products/{id}&#xa;Load entity -&amp;gt; delete or soft-delete -&amp;gt; SaveChanges -&amp;gt; 204 No Content" vertex="1">
+          <mxGeometry height="70" width="330" x="1135" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="dependency-note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#0f172a;strokeColor=#0f172a;fontFamily=Verdana;fontSize=11;fontColor=#ffffff;align=center;spacing=10;" value="Compile-time dependency direction: API -&amp;gt; Application -&amp;gt; Domain. Infrastructure also references Application to implement its ports. Domain references nothing." vertex="1">
+          <mxGeometry height="44" width="760" x="420" y="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
