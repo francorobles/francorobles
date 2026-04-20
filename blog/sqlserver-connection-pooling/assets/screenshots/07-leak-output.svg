@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Leak scenario output screenshot</title>
+  <desc id="desc">Terminal-style screenshot showing the leak experiment where all pooled connections are occupied and the next borrow times out.</desc>
+  <rect width="1200" height="760" fill="#0f172a"/>
+  <rect x="24" y="24" width="1152" height="712" rx="22" fill="#111b31" stroke="#24314d"/>
+  <circle cx="56" cy="54" r="8" fill="#fb7185"/>
+  <circle cx="82" cy="54" r="8" fill="#fbbf24"/>
+  <circle cx="108" cy="54" r="8" fill="#4ade80"/>
+  <text x="138" y="61" fill="#38bdf8" font-size="30" font-family="Segoe UI, Arial, sans-serif">dotnet run -- leak --count 3 --max-pool-size 3 --connect-timeout-seconds 1</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="24" fill="#e5eefc">
+    <text x="56" y="132">{</text>
+    <text x="88" y="174">"LeakedConnectionCount": <tspan fill="#fca5a5">3</tspan>,</text>
+    <text x="88" y="214">"MaxPoolSize": 3,</text>
+    <text x="88" y="254">"SuccessfullyLeakedConnections": <tspan fill="#fca5a5">3</tspan>,</text>
+    <text x="88" y="294">"LeakedSessionIds": [61, 69, 71],</text>
+    <text x="88" y="334">"AdditionalBorrowSucceeded": <tspan fill="#fca5a5">false</tspan>,</text>
+    <text x="88" y="394">"FailureMessage":</text>
+    <text x="120" y="434">"Timeout expired. The timeout period elapsed prior</text>
+    <text x="120" y="474">to obtaining a connection from the pool. This may</text>
+    <text x="120" y="514">have occurred because all pooled connections were</text>
+    <text x="120" y="554">in use and max pool size was reached."</text>
+    <text x="56" y="620">}</text>
+    <text x="56" y="704" fill="#94a3b8">A leak is just pool exhaustion that arrives wearing a fake mustache.</text>
+  </g>
+</svg>

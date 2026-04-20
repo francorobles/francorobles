@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">API endpoints screenshot</title>
+  <desc id="desc">Code-style screenshot showing the ASP.NET Core controller endpoints for the connection pooling lab.</desc>
+  <rect width="1200" height="760" fill="#0f172a"/>
+  <rect x="24" y="24" width="1152" height="712" rx="22" fill="#111827" stroke="#22304a"/>
+  <circle cx="56" cy="54" r="8" fill="#fb7185"/>
+  <circle cx="82" cy="54" r="8" fill="#fbbf24"/>
+  <circle cx="108" cy="54" r="8" fill="#4ade80"/>
+  <text x="138" y="61" fill="#22d3ee" font-size="30" font-family="Segoe UI, Arial, sans-serif">PoolingController.cs</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="23">
+    <text x="52" y="126" fill="#93c5fd">7:</text><text x="108" y="126" fill="#f9a8d4">[ApiController]</text>
+    <text x="52" y="164" fill="#93c5fd">8:</text><text x="108" y="164" fill="#f9a8d4">[Route("api/[controller]")]</text>
+    <text x="52" y="214" fill="#93c5fd">22:</text><text x="108" y="214" fill="#f9a8d4">[HttpPost("setup")]</text>
+    <text x="52" y="252" fill="#93c5fd">29:</text><text x="108" y="252" fill="#f9a8d4">[HttpGet("probe")]</text>
+    <text x="52" y="290" fill="#93c5fd">43:</text><text x="108" y="290" fill="#f9a8d4">[HttpGet("compare")]</text>
+    <text x="52" y="328" fill="#93c5fd">56:</text><text x="108" y="328" fill="#f9a8d4">[HttpGet("exhaust")]</text>
+    <text x="52" y="366" fill="#93c5fd">74:</text><text x="108" y="366" fill="#f9a8d4">[HttpGet("leak-test")]</text>
+    <text x="52" y="404" fill="#93c5fd">90:</text><text x="108" y="404" fill="#f9a8d4">[HttpPost("leaks/acquire")]</text>
+    <text x="52" y="442" fill="#93c5fd">106:</text><text x="108" y="442" fill="#f9a8d4">[HttpGet("leaks/status")]</text>
+    <text x="52" y="480" fill="#93c5fd">112:</text><text x="108" y="480" fill="#f9a8d4">[HttpPost("leaks/clear")]</text>
+
+    <text x="52" y="560" fill="#7dd3fc">Useful routes:</text>
+    <text x="108" y="600" fill="#e5eefc">POST /api/pooling/setup</text>
+    <text x="108" y="638" fill="#e5eefc">GET  /api/pooling/compare?iterations=25</text>
+    <text x="108" y="676" fill="#e5eefc">GET  /api/pooling/exhaust?parallelism=8&amp;maxPoolSize=3</text>
+  </g>
+</svg>

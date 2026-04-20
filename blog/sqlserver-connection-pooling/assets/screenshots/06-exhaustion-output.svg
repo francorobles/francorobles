@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Pool exhaustion output screenshot</title>
+  <desc id="desc">Terminal-style screenshot showing the exhaustion scenario with three successes and five timeout failures.</desc>
+  <rect width="1200" height="760" fill="#0f172a"/>
+  <rect x="24" y="24" width="1152" height="712" rx="22" fill="#111b31" stroke="#24314d"/>
+  <circle cx="56" cy="54" r="8" fill="#fb7185"/>
+  <circle cx="82" cy="54" r="8" fill="#fbbf24"/>
+  <circle cx="108" cy="54" r="8" fill="#4ade80"/>
+  <text x="138" y="61" fill="#38bdf8" font-size="30" font-family="Segoe UI, Arial, sans-serif">dotnet run -- exhaust --parallelism 8 --hold-ms 3000 --max-pool-size 3</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="23" fill="#e5eefc">
+    <text x="56" y="126">{</text>
+    <text x="88" y="166">"SuccessCount": <tspan fill="#86efac">3</tspan>,</text>
+    <text x="88" y="204">"FailureCount": <tspan fill="#fca5a5">5</tspan>,</text>
+    <text x="88" y="242">"AttemptLatency.AverageMs": 1970.0011,</text>
+    <text x="88" y="292">"Attempts": [</text>
+    <text x="120" y="332">{ "WorkerId": 1, "Succeeded": true,  "DurationMs": 3329.0794, "SessionId": 73 },</text>
+    <text x="120" y="370">{ "WorkerId": 2, "Succeeded": false, "DurationMs": 1155.3242, "Error": "Pool timeout" },</text>
+    <text x="120" y="408">{ "WorkerId": 3, "Succeeded": false, "DurationMs": 1155.1527, "Error": "Pool timeout" },</text>
+    <text x="120" y="446">{ "WorkerId": 4, "Succeeded": false, "DurationMs": 1154.9214, "Error": "Pool timeout" },</text>
+    <text x="120" y="484">{ "WorkerId": 5, "Succeeded": false, "DurationMs": 1154.7730, "Error": "Pool timeout" },</text>
+    <text x="120" y="522">{ "WorkerId": 6, "Succeeded": true,  "DurationMs": 3328.1956, "SessionId": 71 },</text>
+    <text x="120" y="560">{ "WorkerId": 7, "Succeeded": false, "DurationMs": 1154.5460, "Error": "Pool timeout" },</text>
+    <text x="120" y="598">{ "WorkerId": 8, "Succeeded": true,  "DurationMs": 3328.0162, "SessionId": 74 }</text>
+    <text x="88" y="638">]</text>
+    <text x="56" y="704" fill="#94a3b8">Three connections got seats. Five waited politely, then gave up.</text>
+  </g>
+</svg>

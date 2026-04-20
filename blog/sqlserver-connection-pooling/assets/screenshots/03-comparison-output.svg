@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Comparison output screenshot</title>
+  <desc id="desc">Terminal-style screenshot showing pooled and non-pooled latency metrics from the compare command.</desc>
+  <rect width="1200" height="760" fill="#0f172a"/>
+  <rect x="24" y="24" width="1152" height="712" rx="22" fill="#111b31" stroke="#24314d"/>
+  <circle cx="56" cy="54" r="8" fill="#fb7185"/>
+  <circle cx="82" cy="54" r="8" fill="#fbbf24"/>
+  <circle cx="108" cy="54" r="8" fill="#4ade80"/>
+  <text x="138" y="61" fill="#38bdf8" font-size="30" font-family="Segoe UI, Arial, sans-serif">dotnet run -- compare --iterations 12 --warmup-iterations 3</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="23" fill="#e5eefc">
+    <text x="56" y="128">{</text>
+    <text x="88" y="168">"Pooled": {</text>
+    <text x="120" y="208">"OpenLatency.AverageMs": <tspan fill="#86efac">0.0603</tspan>,</text>
+    <text x="120" y="246">"TotalLatency.AverageMs": <tspan fill="#86efac">0.7865</tspan>,</text>
+    <text x="120" y="284">"DistinctSessionCount": 1</text>
+    <text x="88" y="324">},</text>
+    <text x="88" y="376">"NonPooled": {</text>
+    <text x="120" y="416">"OpenLatency.AverageMs": <tspan fill="#fca5a5">3.6492</tspan>,</text>
+    <text x="120" y="454">"TotalLatency.AverageMs": <tspan fill="#fca5a5">4.4689</tspan>,</text>
+    <text x="120" y="492">"DistinctSessionCount": 1</text>
+    <text x="88" y="532">},</text>
+    <text x="88" y="584">"OpenLatencySpeedup": <tspan fill="#67e8f9">60.54</tspan>,</text>
+    <text x="88" y="622">"TotalLatencySpeedup": <tspan fill="#67e8f9">5.68</tspan></text>
+    <text x="56" y="670">}</text>
+    <text x="56" y="716" fill="#94a3b8">The SPID can be recycled quickly, so latency is the trustworthy star of the show here.</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Connection pool lifecycle diagram</title>
+  <desc id="desc">Diagram-style screenshot showing how a SQL connection is borrowed, used, and returned to the pool.</desc>
+  <rect width="1200" height="760" fill="#f8fafc"/>
+  <rect x="40" y="40" width="1120" height="680" rx="28" fill="#fffdfa" stroke="#d8e0e7"/>
+  <text x="72" y="102" fill="#0f766e" font-size="34" font-family="Segoe UI, Arial, sans-serif">Connection Pool Lifecycle</text>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="82" y="180" width="210" height="122" rx="22" fill="#dff7f3" stroke="#7dd3c7"/>
+    <text x="118" y="228" fill="#115e59" font-size="28">1. Request</text>
+    <text x="110" y="266" fill="#355a58" font-size="22">Code asks for</text>
+    <text x="116" y="296" fill="#355a58" font-size="22">SqlConnection</text>
+
+    <rect x="352" y="180" width="230" height="122" rx="22" fill="#ecfeff" stroke="#67e8f9"/>
+    <text x="388" y="228" fill="#0f766e" font-size="28">2. Check Pool</text>
+    <text x="384" y="266" fill="#355a58" font-size="22">Idle connection?</text>
+    <text x="380" y="296" fill="#355a58" font-size="22">If none, maybe create one</text>
+
+    <rect x="642" y="180" width="210" height="122" rx="22" fill="#fff7ed" stroke="#fdba74"/>
+    <text x="690" y="228" fill="#b45309" font-size="28">3. Use</text>
+    <text x="676" y="266" fill="#7c4310" font-size="22">Run query or</text>
+    <text x="680" y="296" fill="#7c4310" font-size="22">transaction</text>
+
+    <rect x="912" y="180" width="210" height="122" rx="22" fill="#eef2ff" stroke="#a5b4fc"/>
+    <text x="942" y="228" fill="#4338ca" font-size="28">4. Return</text>
+    <text x="942" y="266" fill="#4c51a6" font-size="22">Dispose the</text>
+    <text x="944" y="296" fill="#4c51a6" font-size="22">logical connection</text>
+
+    <path d="M292 241 H342" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+    <polygon points="342,241 326,231 326,251" fill="#94a3b8"/>
+    <path d="M582 241 H632" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+    <polygon points="632,241 616,231 616,251" fill="#94a3b8"/>
+    <path d="M852 241 H902" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
+    <polygon points="902,241 886,231 886,251" fill="#94a3b8"/>
+
+    <rect x="112" y="402" width="976" height="238" rx="24" fill="#141d2f"/>
+    <text x="150" y="454" fill="#93c5fd" font-size="25" font-family="Consolas, 'Courier New', monospace">If the connection is returned quickly:</text>
+    <text x="150" y="494" fill="#e5eefc" font-size="22" font-family="Consolas, 'Courier New', monospace">- the next caller borrows it almost immediately</text>
+    <text x="150" y="530" fill="#e5eefc" font-size="22" font-family="Consolas, 'Courier New', monospace">- the database avoids repeated setup churn</text>
+    <text x="150" y="578" fill="#fca5a5" font-size="25" font-family="Consolas, 'Courier New', monospace">If it is leaked or held too long:</text>
+    <text x="150" y="618" fill="#e5eefc" font-size="22" font-family="Consolas, 'Courier New', monospace">- the pool fills up</text>
+    <text x="150" y="654" fill="#e5eefc" font-size="22" font-family="Consolas, 'Courier New', monospace">- later callers wait or time out</text>
+  </g>
+</svg>

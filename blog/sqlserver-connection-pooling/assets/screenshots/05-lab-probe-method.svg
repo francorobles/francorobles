@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Probe method screenshot</title>
+  <desc id="desc">Code-style screenshot showing the method that times connection opens and total probe duration.</desc>
+  <rect width="1200" height="760" fill="#0f172a"/>
+  <rect x="24" y="24" width="1152" height="712" rx="22" fill="#111827" stroke="#22304a"/>
+  <circle cx="56" cy="54" r="8" fill="#fb7185"/>
+  <circle cx="82" cy="54" r="8" fill="#fbbf24"/>
+  <circle cx="108" cy="54" r="8" fill="#4ade80"/>
+  <text x="138" y="61" fill="#22d3ee" font-size="30" font-family="Segoe UI, Arial, sans-serif">SqlServerConnectionLab.cs - RunSingleProbeAsync</text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="23">
+    <text x="52" y="122" fill="#93c5fd">41:</text><text x="114" y="122" fill="#e5eefc">public async Task&lt;SingleProbeResult&gt; RunSingleProbeAsync(...)</text>
+    <text x="52" y="160" fill="#93c5fd">48:</text><text x="114" y="160" fill="#e5eefc">var connectionString = poolingEnabled</text>
+    <text x="52" y="198" fill="#93c5fd">49:</text><text x="114" y="198" fill="#e5eefc">    ? _connectionStringFactory.BuildPooledConnectionString(...)</text>
+    <text x="52" y="236" fill="#93c5fd">50:</text><text x="114" y="236" fill="#e5eefc">    : _connectionStringFactory.BuildNonPooledConnectionString(...);</text>
+    <text x="52" y="286" fill="#93c5fd">53:</text><text x="114" y="286" fill="#e5eefc">await using var connection = new SqlConnection(connectionString);</text>
+    <text x="52" y="324" fill="#93c5fd">54:</text><text x="114" y="324" fill="#fca5a5">var totalWatch = Stopwatch.StartNew();</text>
+    <text x="52" y="362" fill="#93c5fd">55:</text><text x="114" y="362" fill="#fca5a5">var openWatch = Stopwatch.StartNew();</text>
+    <text x="52" y="400" fill="#93c5fd">56:</text><text x="114" y="400" fill="#e5eefc">await connection.OpenAsync(cancellationToken);</text>
+    <text x="52" y="438" fill="#93c5fd">57:</text><text x="114" y="438" fill="#e5eefc">openWatch.Stop();</text>
+    <text x="52" y="476" fill="#93c5fd">59:</text><text x="114" y="476" fill="#e5eefc">var probeResult = await ExecuteProbeAsync(connection, holdMilliseconds, tag, cancellationToken);</text>
+    <text x="52" y="514" fill="#93c5fd">60:</text><text x="114" y="514" fill="#e5eefc">totalWatch.Stop();</text>
+    <text x="52" y="564" fill="#93c5fd">63:</text><text x="114" y="564" fill="#e5eefc">return probeResult with</text>
+    <text x="52" y="602" fill="#93c5fd">64:</text><text x="114" y="602" fill="#e5eefc">{</text>
+    <text x="52" y="640" fill="#93c5fd">65:</text><text x="114" y="640" fill="#86efac">    OpenDurationMs = openWatch.Elapsed.TotalMilliseconds,</text>
+    <text x="52" y="678" fill="#93c5fd">66:</text><text x="114" y="678" fill="#86efac">    TotalDurationMs = totalWatch.Elapsed.TotalMilliseconds</text>
+  </g>
+</svg>
