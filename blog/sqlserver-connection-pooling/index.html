@@ -41,11 +41,11 @@
         }
 
         .hero {
-            padding: 3rem;
-            border-radius: 8px;
-            border: 1px solid var(--line);
             background: linear-gradient(135deg, rgba(31, 30, 28, 0.98), rgba(23, 23, 23, 0.94));
+            border: 1px solid var(--line);
+            border-radius: 8px;
             box-shadow: var(--shadow);
+            padding: 3rem;
             position: relative;
             overflow: hidden;
         }
@@ -69,8 +69,8 @@
         }
 
         h1, h2, h3 {
-            margin: 0;
             line-height: 1.15;
+            margin: 0;
         }
 
         h1 {
@@ -255,16 +255,18 @@
         <header class="hero">
             <p class="eyebrow">.NET + SQL Server</p>
             <h1>What SQL Server Connection Pooling Actually Buys You in .NET</h1>
-            <p class="deck">I wanted a sample that did more than repeat the sentence “pooling is faster” in a stern enterprise voice. So I built a small .NET playground that measures pooled vs non-pooled opens, forces pool exhaustion, and deliberately leaks connections like a developer who swore they would “clean that up later” and then went to lunch.</p>
+            <p class="deck">I wanted a sample that did more than repeat the sentence "pooling is faster" in a stern enterprise voice. So I built a small .NET playground that measures pooled vs non-pooled opens, forces pool exhaustion, and deliberately leaks connections like a developer who swore they would "clean that up later" and then went to lunch.</p>
             <div class="meta">
                 <span>April 20, 2026</span>
+                <span>Sample project: <code>sqlserver-connection-pooling</code></span>
+                <span>Blog format: standalone HTML</span>
             </div>
         </header>
 
         <article>
             <section>
                 <h2>Why I built a lab instead of another definition</h2>
-                <p class="lede">Connection pooling is one of those topics everybody “knows,” right up until production gets weird. Then suddenly we are all rediscovering that opening a SQL connection is not just a polite method call. It is network setup, authentication, session creation, and a small amount of database ceremony that you absolutely notice once you do it over and over.</p>
+                <p class="lede">Connection pooling is one of those topics everybody "knows," right up until production gets weird. Then suddenly we are all rediscovering that opening a SQL connection is not just a polite method call. It is network setup, authentication, session creation, and a small amount of database ceremony that you absolutely notice once you do it over and over.</p>
                 <p>I wanted the blog post to show the operational trade-offs, not just the glossary entry. That meant a tiny lab with real numbers, failure cases, and enough control to answer useful questions like: what happens when the pool fills up, what a leak looks like, and why increasing <code>Connect Timeout</code> is sometimes just putting a nicer frame around the same fire.</p>
                 <div class="note">All the screenshots below are local assets from the actual sample in this folder. The numbers are from my machine, not stone tablets from the mountaintop, but the shape of the story is the part that matters.</div>
             </section>
@@ -283,7 +285,7 @@
             <section>
                 <h2>2. What the pool is actually doing</h2>
                 <p>The driver keeps a pool keyed by connection-string shape. When your code asks for a connection, it tries to borrow an idle one first. If no idle connection is available and the pool is below <code>Max Pool Size</code>, it creates another. When your code disposes the connection, the underlying physical connection is usually returned to the pool rather than torn down.</p>
-                <p>That return step is the whole game. If you forget it, the pool cannot help you. A leaked connection is not “still there somewhere.” It is actively occupying a seat at the table. Enough of those and the rest of your app stands outside holding a plate.</p>
+                <p>That return step is the whole game. If you forget it, the pool cannot help you. A leaked connection is not "still there somewhere." It is actively occupying a seat at the table. Enough of those and the rest of your app stands outside holding a plate.</p>
                 <figure>
                     <img src="assets/screenshots/04-pool-lifecycle.png" alt="Diagram-style screenshot showing the request, borrow, use, and return lifecycle of pooled SQL connections." />
                     <figcaption>The lifecycle is simple on paper: borrow, use, return. Most production trouble shows up when one of those verbs stops happening on time.</figcaption>
@@ -333,7 +335,7 @@
             <section>
                 <h2>6. Connection leaks are the boring disaster</h2>
                 <p>My favorite part of the sample is the leak scenario because it fails in such an unglamorous, realistic way. I intentionally hold three connections open with a pool size of three, then try to borrow one more. The fourth request times out exactly the way a real leak-driven incident does.</p>
-                <p>Connection leaks are rarely cinematic. They do not throw confetti. They just slowly turn healthy request paths into timeout factories. By the time somebody says “the database seems a little slow,” the real problem is often that the application stopped returning its rented chairs.</p>
+                <p>Connection leaks are rarely cinematic. They do not throw confetti. They just slowly turn healthy request paths into timeout factories. By the time somebody says "the database seems a little slow," the real problem is often that the application stopped returning its rented chairs.</p>
                 <figure>
                     <img src="assets/screenshots/07-leak-output.png" alt="Terminal-style screenshot showing the leak scenario where all three pooled connections are held and the extra borrow times out." />
                     <figcaption>The leak test holds every available connection and then proves the next borrow cannot proceed.</figcaption>
@@ -343,7 +345,7 @@
             <section>
                 <h2>7. Database restarts are where your assumptions get tested</h2>
                 <p>A pool is not a shrine to immortal connections. If SQL Server restarts or fails over, a client may still be holding onto physical connections that are no longer useful. In practice, the application has to survive that first awkward borrow after the database comes back with a new haircut and a different attitude.</p>
-                <p>The sample exposes setup and control endpoints through a small API, and it includes <code>ClearAllPools</code> support for the lab. In a real system, I would combine proper disposal, transient retry at the operation boundary, and health checks that do not confuse “TCP exists” with “the database is genuinely ready for work.”</p>
+                <p>The sample exposes setup and control endpoints through a small API, and it includes <code>ClearAllPools</code> support for the lab. In a real system, I would combine proper disposal, transient retry at the operation boundary, and health checks that do not confuse "TCP exists" with "the database is genuinely ready for work."</p>
                 <p>I also try hard not to bury failover handling inside giant retry blankets. Retrying a clean idempotent read is one thing. Retrying half a transaction because the app got spooked mid-flight is how incident reports acquire extra paragraphs.</p>
                 <figure>
                     <img src="assets/screenshots/08-api-endpoints.png" alt="Code-style screenshot showing the API endpoints for setup, probe, compare, exhaust, leak-test, and leak control." />
@@ -393,11 +395,33 @@
             </section>
 
             <section>
+                <h2>How to run the sample</h2>
+                <p>The project lives in <code>sqlserver-connection-pooling</code>. Start with the console runner, because it gives you the shortest path from command to observable behavior.</p>
+<pre>cd sqlserver-connection-pooling
+dotnet build
+
+# create the demo database and stored procedure
+dotnet run --project src/SqlServerConnectionPooling.Runner -- setup
+
+# compare pooled vs non-pooled opens
+dotnet run --project src/SqlServerConnectionPooling.Runner -- compare --iterations 25
+
+# force pool exhaustion
+dotnet run --project src/SqlServerConnectionPooling.Runner -- exhaust --parallelism 8 --hold-ms 3000 --max-pool-size 3 --connect-timeout-seconds 1
+
+# simulate a leak
+dotnet run --project src/SqlServerConnectionPooling.Runner -- leak --count 3 --max-pool-size 3 --connect-timeout-seconds 1</pre>
+                <p>If you want an HTTP surface instead, run the API and use the endpoints exposed by <code>PoolingController</code>. That is handy when you want to hit the demo from a browser, a load tool, or the future version of yourself who forgot how your own sample works.</p>
+            </section>
+
+            <section>
                 <h2>Final thought</h2>
                 <p>The part I like about connection pooling is that it rewards plain engineering habits. Dispose what you borrow. Keep transactions short. Size the pool according to actual demand. Do not use timeouts as decorative optimism. None of that is glamorous, but glamorous systems are often the ones writing apology emails later.</p>
                 <p>If I were explaining this to a junior engineer, I would probably say it this way: pooling is not a speed hack, it is resource etiquette. Your app is sharing an expensive thing. Treat it like a shared kitchen, not like your own private fridge door that can be opened forty times in ten minutes just because technically the hinge still works.</p>
             </section>
         </article>
+
+        <p class="footer">Built from the sample project in <code>sqlserver-connection-pooling</code> and rendered as a standalone HTML article with local screenshot assets.</p>
     </div>
 </body>
 </html>

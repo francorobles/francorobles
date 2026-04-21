@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Sample file with imaginary AWS secrets</title>
+  <desc id="desc">Code-editor style screenshot showing a harmless test file with hardcoded fake AWS credentials for secox scanning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffaf2" />
+      <stop offset="100%" stop-color="#f7efe2" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#78350f" flood-opacity="0.16" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <rect x="88" y="70" width="1424" height="760" rx="28" fill="#fffdfa" stroke="#e5d9c8" filter="url(#shadow)" />
+  <rect x="88" y="70" width="1424" height="76" rx="28" fill="#f8efe0" />
+  <rect x="88" y="116" width="1424" height="30" fill="#f8efe0" />
+  <circle cx="140" cy="108" r="10" fill="#f97316" />
+  <circle cx="172" cy="108" r="10" fill="#facc15" />
+  <circle cx="204" cy="108" r="10" fill="#22c55e" />
+  <text x="800" y="117" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="28" text-anchor="middle">aws-demo.txt</text>
+
+  <text x="134" y="212" fill="#b45309" font-family="Consolas, 'Courier New', monospace" font-size="26">1</text>
+  <text x="192" y="212" fill="#334155" font-family="Consolas, 'Courier New', monospace" font-size="30"># Imaginary test fixture for secox</text>
+
+  <text x="134" y="272" fill="#b45309" font-family="Consolas, 'Courier New', monospace" font-size="26">2</text>
+  <text x="192" y="272" fill="#0f172a" font-family="Consolas, 'Courier New', monospace" font-size="30">AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE</text>
+
+  <text x="134" y="332" fill="#b45309" font-family="Consolas, 'Courier New', monospace" font-size="26">3</text>
+  <text x="192" y="332" fill="#0f172a" font-family="Consolas, 'Courier New', monospace" font-size="30">AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</text>
+
+  <text x="134" y="392" fill="#b45309" font-family="Consolas, 'Courier New', monospace" font-size="26">4</text>
+  <text x="192" y="392" fill="#475569" font-family="Consolas, 'Courier New', monospace" font-size="30">REGION=ap-southeast-1</text>
+
+  <rect x="130" y="484" width="1338" height="258" rx="22" fill="#fff7ed" stroke="#fdba74" />
+  <text x="164" y="538" fill="#9a3412" font-family="'Segoe UI', sans-serif" font-size="30" font-weight="700">Test setup note</text>
+  <text x="164" y="586" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="27">These values are intentionally fake and are only here to give the scanner something obvious to catch.</text>
+  <text x="164" y="624" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="27">The blog uses a tiny text file instead of a real app because the goal is to prove the detection loop quickly.</text>
+  <text x="164" y="662" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="27">That makes the first demo readable in one screen: write the file, run `secox scan`, inspect the findings.</text>
+</svg>
