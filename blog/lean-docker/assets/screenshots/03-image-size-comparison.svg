@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960" role="img" aria-labelledby="title desc">
+  <title id="title">Docker image size comparison</title>
+  <desc id="desc">A chart comparing the bloated image at 1.12GB with the lean image at 138MB.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffaf4" />
+      <stop offset="100%" stop-color="#fffdf9" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#7c2d12" flood-opacity="0.14" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="960" fill="#fbf7f1" />
+  <rect x="84" y="80" width="1432" height="800" rx="28" fill="url(#panel)" stroke="#eadfce" filter="url(#shadow)" />
+
+  <text x="132" y="170" fill="#1f2937" font-family="Georgia, 'Times New Roman', serif" font-size="54">The size difference is not subtle</text>
+  <text x="132" y="224" fill="#5b6472" font-family="'Segoe UI', sans-serif" font-size="28">Built on April 22, 2026 from the same tiny Node app in this repo.</text>
+
+  <text x="132" y="336" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="700">Bloated image</text>
+  <rect x="132" y="368" width="1160" height="78" rx="18" fill="#fed7aa" />
+  <rect x="132" y="368" width="1160" height="78" rx="18" fill="#f97316" />
+  <text x="1320" y="418" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="30" font-weight="700">1.12GB</text>
+
+  <text x="132" y="548" fill="#115e59" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="700">Lean image</text>
+  <rect x="132" y="580" width="1160" height="78" rx="18" fill="#ccfbf1" />
+  <rect x="132" y="580" width="143" height="78" rx="18" fill="#14b8a6" />
+  <text x="308" y="630" fill="#115e59" font-family="'Segoe UI', sans-serif" font-size="30" font-weight="700">138MB</text>
+
+  <rect x="132" y="726" width="1240" height="90" rx="22" fill="#fff0df" stroke="#f59e0b" stroke-opacity="0.4" />
+  <text x="166" y="780" fill="#9a3412" font-family="'Segoe UI', sans-serif" font-size="34" font-weight="700">Result</text>
+  <text x="302" y="780" fill="#7c2d12" font-family="'Segoe UI', sans-serif" font-size="30">The lean image cut about 87.7% of the image size while running the same app.</text>
+</svg>
