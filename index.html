@@ -1482,9 +1482,9 @@
 
 									<h2 class="text-color-light text-uppercase font-weight-extra-bold">Say Hello</h2>
 									<form id="contactForm" class="contact-form custom-form-style form-errors-light"
-										action="php/contact-form.php" method="post">
+										action="https://zhcj9xt1g7.execute-api.us-east-1.amazonaws.com/contact" method="post">
 										<div class="contact-form-success alert alert-success d-none mt-4" id="contactSuccess">
-											<strong>Success!</strong> Your message has been sent to us.
+											<strong>Thank you for reaching out!</strong> I'll reply as soon as I read your message.
 										</div>
 										<div class="contact-form-error alert alert-danger d-none mt-4" id="contactError">
 											<strong>Error!</strong> There was an error sending your message.
@@ -1497,12 +1497,16 @@
 													data-msg-required="This field is required." id="name" required="" />
 											</div>
 											<div class="form-control-custom form-control-custom-light">
+												<input type="email" class="form-control" name="email" placeholder="Your Email *"
+													data-msg-required="This field is required." data-msg-email="Please enter a valid email address." id="email" required="" />
+											</div>
+											<div class="form-control-custom form-control-custom-light">
 												<input type="text" class="form-control" name="subject" placeholder="Subject *"
 													data-msg-required="This field is required." id="subject" required="" />
 											</div>
 											<div class="form-control-custom form-control-custom-light">
 												<textarea maxlength="5000" data-msg-required="Please enter your message." rows="10"
-													class="form-control" name="message" placeholder="Message*" id="message" required=""
+													class="form-control" name="message" placeholder="Message *" id="message" required=""
 													aria-required="true"></textarea>
 											</div>
 											<input type="submit"

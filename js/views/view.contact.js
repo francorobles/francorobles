@@ -49,7 +49,7 @@ Theme Version:	13.0.0
 
 				const $form = $(form), $messageSuccess = $form.find('.contact-form-success'), $messageError = $form.find('.contact-form-error'), $submitButton = $(this.submitButton), $errorMessage = $form.find('.mail-error-message'), submitButtonText = $submitButton.val();
 
-				$submitButton.val( $submitButton.data('loading-text') ? $submitButton.data('loading-text') : 'Loading...' ).attr('disabled', true);
+				$submitButton.val( $submitButton.data('loading-text') ? $submitButton.data('loading-text') : 'Sending...' ).attr('disabled', true);
 
 				// Fields Data
 				const formData = $form.serializeArray(), data = {};
@@ -178,7 +178,7 @@ Theme Version:	13.0.0
 
 				const $form = $(form), $messageSuccess = $form.find('.contact-form-success'), $messageError = $form.find('.contact-form-error'), $submitButton = $(this.submitButton), $errorMessage = $form.find('.mail-error-message'), submitButtonText = $submitButton.val();
 
-				$submitButton.val( $submitButton.data('loading-text') ? $submitButton.data('loading-text') : 'Loading...' ).attr('disabled', true);
+				$submitButton.val( $submitButton.data('loading-text') ? $submitButton.data('loading-text') : 'Sending...' ).attr('disabled', true);
 
 				const recaptchaSrcURL = $('#google-recaptcha-v3').attr('src'), newURL          = new URL(recaptchaSrcURL), site_key        = newURL.searchParams.get("render");
 
