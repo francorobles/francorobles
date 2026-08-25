@@ -1,21 +1,39 @@
+const crypto = require('crypto');
 const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
 
 const RECIPIENT = 'hello@francorobles.com';
 const SENDER    = 'hello@francorobles.com'; // must be verified in AWS SES
-const MIN_FORM_FILL_MS = 3000;
+const CAPTCHA_SECRET = process.env.CAPTCHA_SECRET || 'local-dev-captcha-secret';
+const CAPTCHA_TTL_MS = 10 * 60 * 1000;
 
 const ses = new SESClient({ region: process.env.AWS_REGION || 'us-east-1' });
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin':  'https://francorobles.com',
   'Access-Control-Allow-Headers': 'Content-Type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Content-Type': 'application/json',
 };
 
 exports.handler = async (event) => {
-  if (event.requestContext?.http?.method === 'OPTIONS') {
+  const method = event.requestContext?.http?.method || 'POST';
+
+  if (method === 'OPTIONS') {
     return { statusCode: 204, headers: CORS_HEADERS, body: '' };
+  }
+
+  if (method === 'GET') {
+    return {
+      statusCode: 200,
+      headers: {
+        ...CORS_HEADERS,
+        'Cache-Control': 'no-store',
+      },
+      body: JSON.stringify({
+        response: 'success',
+        captcha: createCaptchaChallenge(),
+      }),
+    };
   }
 
   let data;
@@ -32,11 +50,11 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers: CORS_HEADERS, body: JSON.stringify({ response: 'error', errorMessage: 'Invalid request body' }) };
   }
 
-  if (isBotSubmission(data)) {
+  if (!isValidCaptcha(data.captchaToken, data.captchaAnswer)) {
     return {
       statusCode: 200,
       headers: CORS_HEADERS,
-      body: JSON.stringify({ response: 'error', errorMessage: 'Unable to send message. Please try again.' }),
+      body: JSON.stringify({ response: 'error', errorMessage: 'Captcha verification failed. Please try again.' }),
     };
   }
 
@@ -75,16 +93,74 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-function isBotSubmission(data) {
-  if (String(data.company || '').trim() !== '') {
-    return true;
+function createCaptchaChallenge() {
+  const left = crypto.randomInt(2, 10);
+  const right = crypto.randomInt(2, 10);
+  const issuedAt = Date.now();
+  const payload = `${left}:${right}:${issuedAt}`;
+  const signature = sign(payload);
+
+  return {
+    question: `What is ${left} + ${right}?`,
+    token: Buffer.from(`${payload}:${signature}`).toString('base64url'),
+  };
+}
+
+function isValidCaptcha(token, answer) {
+  if (!token || answer === undefined || answer === null) {
+    return false;
   }
 
-  const startedAt = Number(data.formStartedAt || 0);
-
-  if (!startedAt) {
-    return true;
+  let decoded;
+  try {
+    decoded = Buffer.from(String(token), 'base64url').toString('utf8');
+  } catch {
+    return false;
   }
 
-  return (Date.now() - startedAt) < MIN_FORM_FILL_MS;
+  const parts = decoded.split(':');
+  if (parts.length !== 4) {
+    return false;
+  }
+
+  const [leftRaw, rightRaw, issuedAtRaw, providedSignature] = parts;
+  const payload = `${leftRaw}:${rightRaw}:${issuedAtRaw}`;
+  const expectedSignature = sign(payload);
+
+  if (!timingSafeEqual(providedSignature, expectedSignature)) {
+    return false;
+  }
+
+  const left = Number(leftRaw);
+  const right = Number(rightRaw);
+  const issuedAt = Number(issuedAtRaw);
+  const submittedAnswer = Number(String(answer).trim());
+
+  if (!Number.isInteger(left) || !Number.isInteger(right) || !Number.isFinite(issuedAt) || !Number.isFinite(submittedAnswer)) {
+    return false;
+  }
+
+  if ((Date.now() - issuedAt) > CAPTCHA_TTL_MS) {
+    return false;
+  }
+
+  return submittedAnswer === (left + right);
+}
+
+function sign(payload) {
+  return crypto
+    .createHmac('sha256', CAPTCHA_SECRET)
+    .update(payload)
+    .digest('hex');
+}
+
+function timingSafeEqual(left, right) {
+  const leftBuffer = Buffer.from(String(left));
+  const rightBuffer = Buffer.from(String(right));
+
+  if (leftBuffer.length !== rightBuffer.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(leftBuffer, rightBuffer);
 }

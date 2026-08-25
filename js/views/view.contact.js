@@ -5,30 +5,31 @@ Theme Version:	13.0.0
 */
 
 (($ => {
-	const ANTIBOT_MIN_FILL_MS = 3000;
+	function loadCaptcha($form) {
+		const $question = $form.find('[data-captcha-question]');
+		const $answer = $form.find('[name="captchaAnswer"]');
+		const $token = $form.find('[name="captchaToken"]');
 
-	function initAntiBotFields($form) {
-		const $startedAt = $form.find('[name="formStartedAt"]');
+		$question.text('Loading captcha challenge...');
+		$answer.val('').prop('disabled', true);
+		$token.val('');
 
-		if ($startedAt.length) {
-			$startedAt.val(String(Date.now()));
-		}
+		return $.ajax({
+			type: 'GET',
+			url: $form.attr('action'),
+			dataType: 'json'
+		}).done(({ response, captcha, errorMessage }) => {
+			if (response === 'success' && captcha && captcha.question && captcha.token) {
+				$question.text(captcha.question);
+				$token.val(captcha.token);
+				$answer.prop('disabled', false);
+				return;
+			}
 
-		$form.find('[name="company"]').val('');
-	}
-
-	function getAntiBotError(data) {
-		if ((data.company || '').trim() !== '') {
-			return 'Unable to send message. Please try again.';
-		}
-
-		const startedAt = Number(data.formStartedAt || 0);
-
-		if (!startedAt || (Date.now() - startedAt) < ANTIBOT_MIN_FILL_MS) {
-			return 'Please wait a few seconds before sending your message.';
-		}
-
-		return null;
+			$question.text(errorMessage || 'Captcha could not be loaded. Refresh and try again.');
+		}).fail(() => {
+			$question.text('Captcha could not be loaded. Refresh and try again.');
+		});
 	}
 
     /*
@@ -57,7 +58,7 @@ Theme Version:	13.0.0
 	Contact Form: Basic
 	*/
     $('.contact-form').each(function(){
-		initAntiBotFields($(this));
+		loadCaptcha($(this));
 
 		$(this).validate({
 			errorPlacement(error, element) {
@@ -95,10 +96,8 @@ Theme Version:	13.0.0
 					data["g-recaptcha-response"] = $form.find('#g-recaptcha-response').val();
 				}
 
-				const antiBotError = getAntiBotError(data);
-
-				if (antiBotError) {
-					$errorMessage.html(antiBotError).show();
+				if (!data.captchaToken || !data.captchaAnswer) {
+					$errorMessage.html('Please solve the captcha challenge before sending your message.').show();
 					$messageError.removeClass('d-none');
 					$messageSuccess.addClass('d-none');
 					$submitButton.val( submitButtonText ).attr('disabled', false);
@@ -139,7 +138,7 @@ Theme Version:	13.0.0
 						}
 
 						$form.find('.form-control').removeClass('error');
-						initAntiBotFields($form);
+						loadCaptcha($form);
 
 						$submitButton.val( submitButtonText ).attr('disabled', false);
 						
@@ -162,6 +161,8 @@ Theme Version:	13.0.0
 
 					$form.find('.has-success')
 						.removeClass('has-success');
+
+					loadCaptcha($form);
 						
 					$submitButton.val( submitButtonText ).attr('disabled', false);
 
@@ -203,7 +204,7 @@ Theme Version:	13.0.0
 	Contact Form: reCaptcha v3
 	*/
     $('.contact-form-recaptcha-v3').each(function(){
-		initAntiBotFields($(this));
+		loadCaptcha($(this));
 
 		$(this).validate({
 			errorPlacement(error, element) {
@@ -235,10 +236,8 @@ Theme Version:	13.0.0
 					// Recaptcha v3 Token
 					data["g-recaptcha-response"] = token;
 
-					const antiBotError = getAntiBotError(data);
-
-					if (antiBotError) {
-						$errorMessage.html(antiBotError).show();
+					if (!data.captchaToken || !data.captchaAnswer) {
+						$errorMessage.html('Please solve the captcha challenge before sending your message.').show();
 						$messageError.removeClass('d-none');
 						$messageSuccess.addClass('d-none');
 						$submitButton.val( submitButtonText ).attr('disabled', false);
@@ -279,7 +278,7 @@ Theme Version:	13.0.0
 							}
 
 							$form.find('.form-control').removeClass('error');
-							initAntiBotFields($form);
+							loadCaptcha($form);
 
 							$submitButton.val( submitButtonText ).attr('disabled', false);
 							
@@ -302,6 +301,8 @@ Theme Version:	13.0.0
 
 						$form.find('.has-success')
 							.removeClass('has-success');
+
+						loadCaptcha($form);
 							
 						$submitButton.val( submitButtonText ).attr('disabled', false);
 

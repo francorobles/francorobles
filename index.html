@@ -386,6 +386,7 @@
 												<h5 class="text-color-light font-weight-semibold">Lothlorien Labs</h5>
 												<p class="custom-text-color-2">
 													Founded and operate a software company focused on IoT, mobile, and web solutions.
+													<br /><br />Website: <a href="https://lothlorienlabs.com" target="_blank" rel="noopener">lothlorienlabs.com</a>
 													<br /><br />Deployed applications include the ERP system <a href="https://lokierp.com"
 														target="_blank" rel="noopener">LokiErp</a> and Naval Connect, a mobile app for Android and
 													iOS built for LGU Naval.
@@ -1501,13 +1502,6 @@
 										</div>
 
 										<div class="form-content">
-											<input type="hidden" name="formStartedAt" id="formStartedAt" value="" />
-											<div aria-hidden="true"
-												style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;">
-												<label for="company">Leave this field empty</label>
-												<input type="text" class="form-control" name="company" id="company" tabindex="-1"
-													autocomplete="off" />
-											</div>
 											<div class="form-control-custom form-control-custom-light">
 												<input type="text" class="form-control" name="name" placeholder="Your Name *"
 													data-msg-required="This field is required." id="name" required="" />
@@ -1524,6 +1518,17 @@
 												<textarea maxlength="5000" data-msg-required="Please enter your message." rows="10"
 													class="form-control" name="message" placeholder="Message *" id="message" required=""
 													aria-required="true"></textarea>
+											</div>
+											<div class="form-control-custom form-control-custom-light">
+												<div data-captcha-container
+													style="display: block; margin: 0 0 12px; padding: 12px 14px; border: 1px solid rgba(255,255,255,0.35); border-radius: 6px; background: rgba(255,255,255,0.08); color: #fff; font-size: 14px; line-height: 1.5;">
+													<strong style="display: inline-block; margin-right: 6px;">Robot Check:</strong>
+													<span data-captcha-question style="display: inline;">Loading captcha challenge...</span>
+												</div>
+												<input type="text" class="form-control" name="captchaAnswer" id="captchaAnswer"
+													placeholder="Type the answer here *" data-msg-required="Please solve the captcha challenge."
+													autocomplete="off" required="" />
+												<input type="hidden" name="captchaToken" id="captchaToken" value="" />
 											</div>
 											<input type="submit"
 												class="btn btn-quaternary text-color-light text-uppercase font-weight-semibold outline-none custom-btn-style-2 custom-border-radius-1"

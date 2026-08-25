@@ -29,9 +29,37 @@ ZIP_FILE="$SCRIPT_DIR/contact-form.zip"
 # Helpers
 # ---------------------------------------------------------------------------
 check_deps() {
-  for cmd in aws zip; do
+  for cmd in aws zip openssl; do
     command -v "$cmd" &>/dev/null || { echo "ERROR: '$cmd' is not installed."; exit 1; }
   done
+}
+
+generate_captcha_secret() {
+  openssl rand -hex 32
+}
+
+get_captcha_secret() {
+  local secret="${CAPTCHA_SECRET:-}"
+
+  if [[ -n "$secret" ]]; then
+    echo "$secret"
+    return
+  fi
+
+  if aws lambda get-function --function-name "$FUNCTION_NAME" --region "$REGION" &>/dev/null; then
+    secret=$(aws lambda get-function-configuration \
+      --function-name "$FUNCTION_NAME" \
+      --region "$REGION" \
+      --query "Environment.Variables.CAPTCHA_SECRET" \
+      --output text 2>/dev/null || true)
+
+    if [[ -n "$secret" && "$secret" != "None" ]]; then
+      echo "$secret"
+      return
+    fi
+  fi
+
+  generate_captcha_secret
 }
 
 get_account_id() {
@@ -94,6 +122,7 @@ package_lambda() {
 
 deploy_lambda() {
   local role_arn="$1"
+  local captcha_secret="$2"
 
   if aws lambda get-function --function-name "$FUNCTION_NAME" --region "$REGION" &>/dev/null; then
     echo "Updating Lambda function code..."
@@ -107,10 +136,10 @@ deploy_lambda() {
       --function-name "$FUNCTION_NAME" \
       --region "$REGION"
 
-    echo "Clearing Lambda environment variables..."
+    echo "Updating Lambda environment variables..."
     aws lambda update-function-configuration \
       --function-name "$FUNCTION_NAME" \
-      --environment "Variables={}" \
+      --environment "Variables={CAPTCHA_SECRET=${captcha_secret}}" \
       --region "$REGION" > /dev/null
   else
     echo "Creating Lambda function..."
@@ -122,6 +151,7 @@ deploy_lambda() {
       --zip-file "fileb://$ZIP_FILE" \
       --memory-size "$MEMORY" \
       --timeout "$TIMEOUT" \
+      --environment "Variables={CAPTCHA_SECRET=${captcha_secret}}" \
       --region "$REGION" > /dev/null
 
     echo "Waiting for Lambda to be active..."
@@ -148,7 +178,7 @@ ensure_api_gateway() {
       --name "${FUNCTION_NAME}-api" \
       --protocol-type HTTP \
       --cors-configuration \
-        AllowOrigins='["https://francorobles.com"]',AllowMethods='["POST","OPTIONS"]',AllowHeaders='["Content-Type"]' \
+        AllowOrigins='["https://francorobles.com"]',AllowMethods='["GET","POST","OPTIONS"]',AllowHeaders='["Content-Type"]' \
       --region "$REGION" \
       --query ApiId \
       --output text)
@@ -174,6 +204,13 @@ ensure_api_gateway() {
       --target "integrations/${integration_id}" \
       --region "$REGION" > /dev/null
 
+    echo "Creating GET route..." >&2
+    aws apigatewayv2 create-route \
+      --api-id "$api_id" \
+      --route-key "GET /contact" \
+      --target "integrations/${integration_id}" \
+      --region "$REGION" > /dev/null
+
     echo "Creating default stage with throttling and auto-deploy..." >&2
     aws apigatewayv2 create-stage \
       --api-id "$api_id" \
@@ -196,8 +233,45 @@ ensure_api_gateway() {
     aws apigatewayv2 update-api \
       --api-id "$api_id" \
       --cors-configuration \
-        AllowOrigins='["https://francorobles.com"]',AllowMethods='["POST","OPTIONS"]',AllowHeaders='["Content-Type"]' \
+        AllowOrigins='["https://francorobles.com"]',AllowMethods='["GET","POST","OPTIONS"]',AllowHeaders='["Content-Type"]' \
       --region "$REGION" > /dev/null
+
+    local integration_id get_route_id post_route_id
+    integration_id=$(aws apigatewayv2 get-integrations \
+      --api-id "$api_id" \
+      --region "$REGION" \
+      --query "Items[0].IntegrationId" \
+      --output text)
+
+    get_route_id=$(aws apigatewayv2 get-routes \
+      --api-id "$api_id" \
+      --region "$REGION" \
+      --query "Items[?RouteKey=='GET /contact'].RouteId" \
+      --output text)
+
+    post_route_id=$(aws apigatewayv2 get-routes \
+      --api-id "$api_id" \
+      --region "$REGION" \
+      --query "Items[?RouteKey=='POST /contact'].RouteId" \
+      --output text)
+
+    if [[ -z "$post_route_id" || "$post_route_id" == "None" ]]; then
+      echo "Creating missing POST route..." >&2
+      aws apigatewayv2 create-route \
+        --api-id "$api_id" \
+        --route-key "POST /contact" \
+        --target "integrations/${integration_id}" \
+        --region "$REGION" > /dev/null
+    fi
+
+    if [[ -z "$get_route_id" || "$get_route_id" == "None" ]]; then
+      echo "Creating missing GET route..." >&2
+      aws apigatewayv2 create-route \
+        --api-id "$api_id" \
+        --route-key "GET /contact" \
+        --target "integrations/${integration_id}" \
+        --region "$REGION" > /dev/null
+    fi
 
     aws apigatewayv2 update-stage \
       --api-id "$api_id" \
@@ -302,8 +376,12 @@ echo "==> Packaging Lambda..."
 package_lambda
 
 echo ""
+echo "==> Preparing captcha secret..."
+CAPTCHA_SECRET_VALUE="$(get_captcha_secret)"
+
+echo ""
 echo "==> Deploying Lambda..."
-deploy_lambda "$ROLE_ARN"
+deploy_lambda "$ROLE_ARN" "$CAPTCHA_SECRET_VALUE"
 
 echo ""
 echo "==> Setting up API Gateway..."
