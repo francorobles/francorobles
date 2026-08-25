@@ -5,6 +5,32 @@ Theme Version:	13.0.0
 */
 
 (($ => {
+	const ANTIBOT_MIN_FILL_MS = 3000;
+
+	function initAntiBotFields($form) {
+		const $startedAt = $form.find('[name="formStartedAt"]');
+
+		if ($startedAt.length) {
+			$startedAt.val(String(Date.now()));
+		}
+
+		$form.find('[name="company"]').val('');
+	}
+
+	function getAntiBotError(data) {
+		if ((data.company || '').trim() !== '') {
+			return 'Unable to send message. Please try again.';
+		}
+
+		const startedAt = Number(data.formStartedAt || 0);
+
+		if (!startedAt || (Date.now() - startedAt) < ANTIBOT_MIN_FILL_MS) {
+			return 'Please wait a few seconds before sending your message.';
+		}
+
+		return null;
+	}
+
     /*
 	Custom Rules
 	*/
@@ -31,6 +57,8 @@ Theme Version:	13.0.0
 	Contact Form: Basic
 	*/
     $('.contact-form').each(function(){
+		initAntiBotFields($(this));
+
 		$(this).validate({
 			errorPlacement(error, element) {
 				if(element.attr('type') == 'radio' || element.attr('type') == 'checkbox') {
@@ -67,6 +95,16 @@ Theme Version:	13.0.0
 					data["g-recaptcha-response"] = $form.find('#g-recaptcha-response').val();
 				}
 
+				const antiBotError = getAntiBotError(data);
+
+				if (antiBotError) {
+					$errorMessage.html(antiBotError).show();
+					$messageError.removeClass('d-none');
+					$messageSuccess.addClass('d-none');
+					$submitButton.val( submitButtonText ).attr('disabled', false);
+					return;
+				}
+
 				// Ajax Submit
 				$.ajax({
 					type: 'POST',
@@ -101,6 +139,7 @@ Theme Version:	13.0.0
 						}
 
 						$form.find('.form-control').removeClass('error');
+						initAntiBotFields($form);
 
 						$submitButton.val( submitButtonText ).attr('disabled', false);
 						
@@ -164,6 +203,8 @@ Theme Version:	13.0.0
 	Contact Form: reCaptcha v3
 	*/
     $('.contact-form-recaptcha-v3').each(function(){
+		initAntiBotFields($(this));
+
 		$(this).validate({
 			errorPlacement(error, element) {
 				if(element.attr('type') == 'radio' || element.attr('type') == 'checkbox') {
@@ -193,6 +234,16 @@ Theme Version:	13.0.0
 
 					// Recaptcha v3 Token
 					data["g-recaptcha-response"] = token;
+
+					const antiBotError = getAntiBotError(data);
+
+					if (antiBotError) {
+						$errorMessage.html(antiBotError).show();
+						$messageError.removeClass('d-none');
+						$messageSuccess.addClass('d-none');
+						$submitButton.val( submitButtonText ).attr('disabled', false);
+						return;
+					}
 
 					// Ajax Submit
 					$.ajax({
@@ -228,6 +279,7 @@ Theme Version:	13.0.0
 							}
 
 							$form.find('.form-control').removeClass('error');
+							initAntiBotFields($form);
 
 							$submitButton.val( submitButtonText ).attr('disabled', false);
 							

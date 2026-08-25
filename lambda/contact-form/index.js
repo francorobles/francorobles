@@ -2,6 +2,7 @@ const { SESClient, SendEmailCommand } = require('@aws-sdk/client-ses');
 
 const RECIPIENT = 'hello@francorobles.com';
 const SENDER    = 'hello@francorobles.com'; // must be verified in AWS SES
+const MIN_FORM_FILL_MS = 3000;
 
 const ses = new SESClient({ region: process.env.AWS_REGION || 'us-east-1' });
 
@@ -29,6 +30,14 @@ exports.handler = async (event) => {
       : Object.fromEntries(new URLSearchParams(raw));
   } catch {
     return { statusCode: 400, headers: CORS_HEADERS, body: JSON.stringify({ response: 'error', errorMessage: 'Invalid request body' }) };
+  }
+
+  if (isBotSubmission(data)) {
+    return {
+      statusCode: 200,
+      headers: CORS_HEADERS,
+      body: JSON.stringify({ response: 'error', errorMessage: 'Unable to send message. Please try again.' }),
+    };
   }
 
   const { name = 'Unknown', email = '', subject = 'New message from portfolio', message = '' } = data;
@@ -64,4 +73,18 @@ function esc(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function isBotSubmission(data) {
+  if (String(data.company || '').trim() !== '') {
+    return true;
+  }
+
+  const startedAt = Number(data.formStartedAt || 0);
+
+  if (!startedAt) {
+    return true;
+  }
+
+  return (Date.now() - startedAt) < MIN_FORM_FILL_MS;
 }
