@@ -21,6 +21,10 @@
       <a href="https://francorobles.com">francorobles.com</a>
       <br />
       <a href="https://lothlorienlabs.com">lothlorienlabs.com</a>
+      <br />
+      <a href="https://remote101.ph">remote101.ph</a>
+      <br />
+      <a href="https://e-skwela.com">e-skwela.com</a>
     </td>
     <td valign="top">
       <pre>
