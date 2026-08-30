@@ -6,13 +6,6 @@
 <table>
   <tr>
     <td width="320" valign="top">
-      <img
-        src="https://avatars.githubusercontent.com/francorobles?v=4"
-        alt="Franco Robles"
-        width="260"
-      />
-      <br />
-      <br />
       <strong>Current</strong>
       <br />
       Senior Backend Engineer at Peregrine Global
